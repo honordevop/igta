@@ -11,8 +11,8 @@ const AboutHome = () => {
             About IGTA
           </h1>
           <p>
-            IGTA began when renowed educator Justice Nji Christain Anyafor had a
-            revolutionary idea to offer a plaform that brings individuals
+            IGTA was birthed 10 years ago by a renowed team of educators who had
+            a revolutionary idea to offer a plaform that brings individuals
             seeking for carreer growth knowledge and professionals ready to
             mentor adn training talents together for free. The mission is to
             create and internationally accessible plaform that provides training
