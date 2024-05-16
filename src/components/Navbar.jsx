@@ -7,10 +7,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { navLinks } from "@/utils/store";
 import MobileMenu from "./MobileMenu";
+import { signOut, useSession } from "next-auth/react";
 // import Button from "@/UI/Button";
 // import NavMenu from "./NavMenu";
 
 const Navbar = () => {
+  const session = useSession();
   const [toggle, setToggle] = useState(false);
 
   const closeMenu = () => {
@@ -40,7 +42,21 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* <Button link="#" title="Sign-In" /> */}
+          {session.status === "authenticated" ? (
+            <div
+              onClick={signOut}
+              className="primaryBgColor py-1 px-3 text-xl font-semibold w-max rounded-md text-white cursor-pointer"
+            >
+              Sign Out
+            </div>
+          ) : (
+            <Link
+              href="#"
+              className="primaryBgColor py-1 px-3 text-xl font-semibold w-max rounded-md text-white cursor-pointer"
+            >
+              Sign In
+            </Link>
+          )}
 
           <div className="md:hidden flex items-center gap-5 primaryColor text-[40px] cursor-pointer bg-white">
             {!toggle ? (

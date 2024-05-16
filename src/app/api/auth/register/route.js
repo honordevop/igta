@@ -2,15 +2,16 @@ import Users from "@/models/Users";
 import connect from "@/utils/db";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import Trade from "@/models/Trade";
+import Trade from "@/models/Posts";
 
 export const POST = async (request) => {
   const {
     fullname,
     email,
+    gender,
     password,
+    designation,
     country,
-    currency,
     occupation,
     mobilenumber,
   } = await request.json();
@@ -22,15 +23,12 @@ export const POST = async (request) => {
   const newUser = new Users({
     fullname,
     email,
-    currency,
+    designation,
     country,
+    gender,
     occupation,
     mobilenumber,
     password: hashedPassword,
-  });
-
-  const initializeTrade = new Trade({
-    email,
   });
 
   try {
@@ -44,7 +42,6 @@ export const POST = async (request) => {
       );
     }
     await newUser.save();
-    await initializeTrade.save();
     return NextResponse.json({ message: "Account Created" }, { status: 201 });
   } catch (err) {
     return NextResponse.json({ err }, { status: 500 });

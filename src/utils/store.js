@@ -2,6 +2,14 @@ import { AiOutlineGift } from "react-icons/ai";
 import { BsBank2, BsGraphUpArrow } from "react-icons/bs";
 import { GiAlarmClock, GiSpeedometer } from "react-icons/gi";
 import { GiWorld } from "react-icons/gi";
+import { MdDashboard, MdOutlineLocalPostOffice } from "react-icons/md";
+import { FaArrowsTurnToDots } from "react-icons/fa6";
+import { FaCalendarDay, FaRegIdBadge } from "react-icons/fa";
+import { TfiWrite } from "react-icons/tfi";
+import { CgProfile } from "react-icons/cg";
+import { RiBuilding2Line } from "react-icons/ri";
+import { VscFolderActive } from "react-icons/vsc";
+import { SiOnlyoffice } from "react-icons/si";
 
 export const navLinks = [
   {
@@ -139,5 +147,47 @@ export const aboutData = [
     desc: "IGTA’s proven playbook is globally scalable, addressing the widespread proffessional talent shortages that impact growth, productivity, and innovation. We collaborate with enterprises and highly motivated individuals to design a tailored skills transformation journey. Our exclusive content is co-created and continually refined with proffesionals and industry leaders. Each Udacity program is deeply focused—eliminating guesswork in selecting the right course. Projects and learners assesment go far beyond step-by-step guides, cultivating the critical thinking required for workplace relevance. Expert mentors unblock learning with personalized support, and verify complete mastery of competencies.",
     sub: "empower learners, organizations and nations",
     image: "/about2.jpg",
+  },
+];
+
+export const genderOptions = ["Gender", "Male", "Female", "Prefer Not to Say"];
+
+export const designationOptions = [
+  "Designation",
+  "Member",
+  "Mentor",
+  "Ambassador",
+];
+
+export const userTabsLink = [
+  {
+    title: "Dashboard",
+    icon: <MdDashboard />,
+    link: "/dashboard",
+    slug: "dashboard",
+  },
+  {
+    title: "Attendance",
+    icon: <FaArrowsTurnToDots />,
+    link: "/attendance",
+    slug: "attendance",
+  },
+  {
+    title: "Leave Managment",
+    icon: <FaCalendarDay />,
+    link: "/leave",
+    slug: "leave",
+  },
+  {
+    title: "Complaints",
+    icon: <TfiWrite />,
+    link: "/complaints",
+    slug: "complaints",
+  },
+  {
+    title: "Profile",
+    icon: <CgProfile />,
+    link: "/profile",
+    slug: "profile",
   },
 ];

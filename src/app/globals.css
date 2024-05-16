@@ -82,6 +82,13 @@ body {
 .primaryBgColor {
   background-color: #b52624;
 }
+.scrollWidth0 {
+  scrollbar-width: 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+}
 
 .glassMorphism {
   background: rgba(255, 255, 255, 0.5);

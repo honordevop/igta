@@ -3,6 +3,7 @@ import DiplomaHome from "@/components/DiplomaHome";
 import Hero from "@/components/Hero";
 import NewsLetter from "@/components/NewsLetter";
 import ServicesHome from "@/components/ServicesHome";
+import Team from "@/components/Team";
 import Trainings from "@/components/Trainings";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <AboutHome />
       </div>
       <Trainings />
+      {/* <Team /> */}
       <ServicesHome />
       <DiplomaHome />
     </div>

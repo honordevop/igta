@@ -44,8 +44,8 @@ const authOptions = {
     }),
   ],
   pages: {
-    signIn: "/trade/login",
-    error: "/trade/login",
+    signIn: "/dashboard/login",
+    error: "/dashboard/login",
   },
   site: process.env.NEXTAUTH_URL,
   signIn: {

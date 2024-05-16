@@ -77,12 +77,18 @@ const Footer = () => {
                 <ul className="flex flex-col gap-2 mt-4">
                   <li className="flex gap-5 items-center">
                     <IoLocationSharp className="text-2xl" />{" "}
-                    <p> Delta State, Nigeria</p>
+                    <div>
+                      <p> Manitoba, Canada.</p>
+                      <p>Cameroon.</p>
+                    </div>
                   </li>
                   <li className="flex gap-5 items-center">
                     <MdPermPhoneMsg className="text-2xl" />
                     <div>
-                      <p>07069589771</p>
+                      <p>+234 9061304961</p>
+                      <p>+49 1789830368</p>
+                      <p>+237 676789863</p>
+                      <p>+971 502014053</p>
                       {/* <p>08130812433</p> */}
                     </div>
                   </li>
@@ -99,7 +105,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-blue-400 w-full flex items-center justify-center">
-          <p className="py-3">
+          <p className="py-3 text-center">
             Copyright © 2024 - Insight Global Training Academy (IGTA)
           </p>
         </div>
