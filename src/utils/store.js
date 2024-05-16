@@ -329,4 +329,9 @@ export const teamsData = [
     desc: "Regional President of YEEC, Founder & CEO of IGTA",
     img: "/justice.jpg",
   },
+  {
+    name: "H.E. Amb. Sabina Nanyonge Ngando",
+    desc: "Administrator, Director IGTA",
+    img: "/sabina.jpg",
+  },
 ];
