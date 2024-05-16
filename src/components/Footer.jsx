@@ -78,18 +78,21 @@ const Footer = () => {
                   <li className="flex gap-5 items-center">
                     <IoLocationSharp className="text-2xl" />{" "}
                     <div>
-                      <p> Manitoba, Canada.</p>
-                      <p>Cameroon.</p>
+                      <p> Manitoba, Canada &</p>
+                      <p>Emana, Yaoundé-Cameroon</p>
                     </div>
                   </li>
                   <li className="flex gap-5 items-center">
                     <MdPermPhoneMsg className="text-2xl" />
                     <div>
+                      <p>+237 656676753</p>
                       <p>+234 9061304961</p>
+                      <p>+971 502014053</p>
                       <p>+49 1789830368</p>
                       <p>+237 676789863</p>
-                      <p>+971 502014053</p>
-                      {/* <p>08130812433</p> */}
+                      <p>+254 746712298</p>
+                      <p>+231 775596848</p>
+                      <p>+233 248975472</p>
                     </div>
                   </li>
                   <li className="flex gap-5 items-center">

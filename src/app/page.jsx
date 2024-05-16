@@ -16,7 +16,9 @@ export default function Home() {
         <AboutHome />
       </div>
       <Trainings />
-      {/* <Team /> */}
+      {/* <div className="container">
+        <Team />
+      </div> */}
       <ServicesHome />
       <DiplomaHome />
     </div>

@@ -19,7 +19,7 @@ const TrainingModules = () => {
         className="w-full flex flex-col md:flex-row gap-5 mt-10 items-center justify-center"
         style={{ transform: `translateY(${slide}` }}
       >
-        {trainingModule.map((item, i) => (
+        {trainingModule.slice(0, 4).map((item, i) => (
           <div
             key={i}
             className="w-[350px] flex flex-col gap-5 rounded-md border-2 border-double text-blue-700 primaryColor h-max p-2 glassMorphism"

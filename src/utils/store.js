@@ -19,11 +19,16 @@ export const navLinks = [
   },
   {
     id: "2",
+    title: "OUR TEAM",
+    url: "/teams",
+  },
+  {
+    id: "3",
     title: "TRAINING",
     url: "/trainings",
   },
   {
-    id: "3",
+    id: "4",
     title: "SERVICES",
     url: "/services",
   },
@@ -88,6 +93,42 @@ export const trainingModule = [
     mode: "Scheduled Virtual",
     image: "/logistics.png",
   },
+  {
+    title: "Consultacy",
+    desc: "Our Consultancy training aims to equip individuals with the skills needed for effective problem-solving, strategic thinking, and project management, while enhancing analytical, communication, and relationship-building abilities. It focuses on understanding client needs, providing industry-specific knowledge, and maintaining high ethical standards, ultimately enabling consultants to deliver tailored, data-driven solutions and build lasting client trust.",
+    category: "Management and Administration",
+    mode: "Scheduled Virtual",
+    image: "/Consultancy.webp",
+  },
+
+  {
+    title: "NGO Management",
+    desc: "IGTA's NGO management training aims to develop skills in strategic planning, project management, fundraising, and financial management, while enhancing leadership, communication, and stakeholder engagement abilities. It focuses on understanding community needs, ensuring effective program implementation, promoting transparency and accountability, and fostering sustainable development practices, ultimately enabling NGO professionals to drive impactful change and achieve organizational goals.",
+    category: "Management and Administration",
+    mode: "Scheduled Virtual",
+    image: "/ngo.jpg",
+  },
+  {
+    title: "Accountancy",
+    desc: "The Accountancy training aims to develop expertise in financial reporting, auditing, tax planning, and compliance, while enhancing analytical, ethical, and problem-solving skills. It focuses on understanding accounting principles, mastering financial software, ensuring accuracy and transparency in financial records, and providing strategic financial advice, ultimately enabling accountants to support informed decision-making and maintain the financial health of organizations.",
+    category: "Management and Administration",
+    mode: "Scheduled Virtual",
+    image: "/accounting.png",
+  },
+  {
+    title: "Project Management",
+    desc: "Our Project management training aims to develop skills in planning, executing, and closing projects, while enhancing leadership, communication, and risk management abilities. It focuses on mastering project management methodologies, optimizing resource allocation, ensuring timely delivery, and maintaining budget control, ultimately enabling project managers to achieve project goals efficiently and effectively while meeting stakeholder expectations.",
+    category: "Management and Administration",
+    mode: "Scheduled Virtual",
+    image: "/project.jpg",
+  },
+  {
+    title: "Human Resource Management",
+    desc: "Human resource management training aims to develop skills in recruitment, employee relations, performance management, and compliance, while enhancing leadership, communication, and strategic planning abilities. It focuses on understanding labor laws, fostering a positive workplace culture, implementing effective HR policies, and promoting employee development, ultimately enabling HR professionals to support organizational goals and enhance employee satisfaction and productivity.",
+    category: "Management and Administration",
+    mode: "Scheduled Virtual",
+    image: "/hr.webp",
+  },
 ];
 
 export const servicesData = [
@@ -138,7 +179,7 @@ export const servicesData = [
 export const aboutData = [
   {
     title: "Upskilling for the",
-    desc: "IGTA was birthed 10 years ago by a renowed team of educators who had a revolutionary idea to offer a plaform that brings individuals seeking for carreer growth knowledge and professionals ready to mentor adn training talents together for free. The mission is to create and internationally accessible plaform that provides training and resources to empowers everyone from any part of the world sutainable and affordably.     Over 5,000 students in more than 20 countries trained, with continuous demand of a new and easily accessible way to deliver education adn trainings. This revelation sparked a mission to make lifelong learning more equitable and inclusive. We have consistently implemented different trainings that spans accross individual personal development and organization career advancement.",
+    desc: "IGTA was birthed 10 years ago by a renowed team of educators who had a revolutionary idea to offer a plaform that brings individuals seeking for carreer growth knowledge and professionals ready for mentorship and training of talents together for free. The mission is to create an internationally accessible plaform that provides training and resources to empowers everyone from any part of the world sustainably and affordably. Over 50000 students in more than 20 countries trained, with continuous demand of a new and easily accessible way to deliver education and trainings. This revelation sparked a mission to make lifelong learning more equitable and inclusive. We have consistently implemented different trainings that spans accross individual personal development and organization career advancement.",
     sub: "careers of the future",
     image: "/about.webp",
   },
@@ -189,5 +230,103 @@ export const userTabsLink = [
     icon: <CgProfile />,
     link: "/profile",
     slug: "profile",
+  },
+];
+
+export const teamsData = [
+  {
+    name: "Elvis ujuater Abiritei",
+    desc: "IGTA Class H facilitator-UAE",
+    img: "/elvis.png",
+  },
+  {
+    name: "Ava Adelina",
+    desc: "IGTA Facilitator Canada",
+    img: "/adelina.jpeg",
+  },
+  {
+    name: "Lolia Apiriala Atedoghu",
+    desc: "IGTA International Secretary",
+    img: "/apiriala.jpg",
+  },
+  {
+    name: "Liam Cody",
+    desc: "IGTA Facilitator Texas",
+    img: "/liam.png",
+  },
+  {
+    name: "Muhammad Yusuf",
+    desc: "IGTA Facilitator Pakistan",
+    img: "/muhammad.jpg",
+  },
+  {
+    name: "Karl Jayden",
+    desc: "IGTA Facilitator Germany",
+    img: "/jayden.jpg",
+  },
+  {
+    name: "Ebinehita Umanhonlen",
+    desc: "IGTA CLASS T FACILITATOR",
+    img: "/ebinehita.jpg",
+  },
+  {
+    name: "MR . Daniel Alao",
+    desc: "IGTA Facilitator (CLASS D)",
+    img: "/daniel.png",
+  },
+  {
+    name: "Gwom Elisha Habila",
+    desc: "IGTA Class E Facilitator",
+    img: "/elisha.png",
+  },
+  {
+    name: "Osakpolor Joseph Aisien",
+    desc: "IGTA Facilitator",
+    img: "/osakpolor.png",
+  },
+  {
+    name: "Engr. Afolabi Akinola Abraham",
+    desc: "IGTA Facilitator",
+    img: "/afolabi.png",
+  },
+  {
+    name: "Engr. Godwin A Adoga",
+    desc: "IGTA Facilitator Class V",
+    img: "/godwin.jpg",
+  },
+  {
+    name: "Kenneth S. Flomo",
+    desc: "IGTA Facilitator Liberia",
+    img: "/kenneth.jpg",
+  },
+  {
+    name: "Mrs. Juliet Edafe",
+    desc: "IGTA Operational Secretary",
+    img: "/juliet.png",
+  },
+  {
+    name: "Ismail Busari",
+    desc: "IGTA Facilitator Class B",
+    img: "/ismail.jpg",
+  },
+  {
+    name: "Bebenimibo Seyiefa Esther",
+    desc: "IGTA Coordinator Abuja",
+    img: "/bebenimibo.jpg",
+  },
+  {
+    name: "Mrs.Jullian Achieng Oduor",
+    desc: "IGTA Ambassador East Africa",
+    img: "/jullian.jpg",
+  },
+  {
+    name: "Bertrand Awa - UAE",
+    desc: "IGTA Ambassador Northeast Asia",
+    img: "/bertrand.jpg",
+  },
+  {
+    name: "H.E. Engr. Justice. Nji Christain Ayafor",
+    desc: "Regional President of YEEC, Founder & CEO of IGTA",
+    img: "/justice.jpg",
   },
 ];

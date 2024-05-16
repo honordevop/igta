@@ -1,4 +1,5 @@
 import Button from "@/UI/Button";
+import { aboutData } from "@/utils/store";
 import Image from "next/image";
 import React from "react";
 
@@ -10,21 +11,7 @@ const AboutHome = () => {
           <h1 className="text-3xl font-semibold py-1 border-b-2 border-b-[#b52624] w-max">
             About IGTA
           </h1>
-          <p>
-            IGTA was birthed 10 years ago by a renowed team of educators who had
-            a revolutionary idea to offer a plaform that brings individuals
-            seeking for carreer growth knowledge and professionals ready to
-            mentor adn training talents together for free. The mission is to
-            create and internationally accessible plaform that provides training
-            and resources to empowers everyone from any part of the world
-            sutainable and affordably. Over 5,000 students in more than 20
-            countries trained, with continuous demand of a new and easily
-            accessible way to deliver education adn trainings. This revelation
-            sparked a mission to make lifelong learning more equitable and
-            inclusive. We have consistently implemented different trainings that
-            spans accross individual personal development and organization
-            career advancement.
-          </p>
+          <p> {aboutData[0].desc}</p>
           <Button link="/about" title="Learn More" />
         </div>
         <div className="flex-1 ">
