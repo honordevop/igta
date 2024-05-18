@@ -3,6 +3,7 @@ import { trainingModule } from "@/utils/store";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const TrainingModules = () => {
   const [slide, setSlide] = useState("");
@@ -56,13 +57,27 @@ const TrainingModules = () => {
           </div>
         ))}
       </div>
+      <div className="flex flex-col md:flex-row gap-1 md:gap-5 items-center justify-center">
+        <Link
+          href="/trainings"
+          className="w-max font-black text-lg primaryBgColor px-6 py-2 rounded-lg mt-12 flex gap-2 items-center justify-center"
+        >
+          View More Trainings{" "}
+          <span>
+            <FaRegArrowAltCircleRight className="text-white" />
+          </span>
+        </Link>
 
-      <Link
-        href="/trainings"
-        className="font-black text-lg primaryBgColor px-6 py-2 rounded-lg mt-12"
-      >
-        View All Trainings
-      </Link>
+        <Link
+          href="/events"
+          className="w-max font-black text-lg primaryBgColor px-6 py-2 rounded-lg mt-6 md:mt-12 flex gap-2 items-center justify-center"
+        >
+          View Ongoing Trainings{" "}
+          <span>
+            <FaRegArrowAltCircleRight className="text-white" />
+          </span>
+        </Link>
+      </div>
     </div>
   );
 };
