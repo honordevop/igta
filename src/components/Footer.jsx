@@ -60,7 +60,7 @@ const Footer = () => {
                   <Link href="/about">About</Link>
                   <Link href="/trainings">Trainings</Link>
                   <Link href="/services">Services</Link>
-                  <Link href="/resources">Resources</Link>
+                  <Link href="/events">Events</Link>
                 </ul>
               </div>
 
@@ -99,6 +99,9 @@ const Footer = () => {
                     <BsEnvelopeCheckFill className="text-2xl" />{" "}
                     <div>
                       <p>info@igtainternational.org</p>
+                      <p>
+                        insightglobaltrainingacademy <br /> @gmail.com
+                      </p>
                     </div>
                   </li>
                 </ul>
