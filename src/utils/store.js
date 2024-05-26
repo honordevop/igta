@@ -300,6 +300,16 @@ export const teamsData = [
     img: "/afolabi.png",
   },
   {
+    name: "Godwin LLiya Mathaias",
+    desc: "IGTA Facilitator/Coordinator",
+    img: "/godwin.jpeg",
+  },
+  {
+    name: "Yusuf Moshood Olayinka ",
+    desc: "IGTA Facilitator",
+    img: "/moshood.jpeg",
+  },
+  {
     name: "Engr. Godwin A Adoga",
     desc: "IGTA Facilitator Class V",
     img: "/godwin.jpg",
@@ -322,7 +332,7 @@ export const teamsData = [
   {
     name: "Engr. Aminu, K. A",
     desc: "IGTA Cordinator Lagos State",
-    img: "/aminu.png",
+    img: "/aminu.jpg",
   },
   {
     name: "Bebenimibo Seyiefa Esther",
