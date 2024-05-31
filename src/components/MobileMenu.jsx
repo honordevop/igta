@@ -24,7 +24,7 @@ const MobileMenu = ({ toggleMenu }) => {
         </ul>
         <div>
           {session.status === "authenticated" ? (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-4 items-center">
               <Link
                 href="/dashboard"
                 className="primaryBgColor py-1 px-3 text-xl font-semibold w-max rounded-md text-white cursor-pointer"
