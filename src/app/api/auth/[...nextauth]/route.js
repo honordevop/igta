@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 // import CredentialProvider from "next-auth/providers/credentials";
 import CredentialsProvider from "next-auth/providers/credentials";
-import connect from "@/utils/db";
+import connect from "@/Utils/db";
 import Users from "@/models/Users";
 import bcrypt from "bcryptjs";
 
@@ -44,8 +44,8 @@ const authOptions = {
     }),
   ],
   pages: {
-    signIn: "/dashboard/login",
-    error: "/dashboard/login",
+    signIn: "/auth",
+    error: "/auth",
   },
   site: process.env.NEXTAUTH_URL,
   signIn: {

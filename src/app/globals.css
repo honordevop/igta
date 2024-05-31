@@ -111,3 +111,19 @@ body {
 .slider {
   border: #b52624 1px solid;
 }
+
+@media screen and (max-width: 1024px) {
+  .hideDivMax1024 {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .hideDivMin1025 {
+    display: none;
+  }
+}
+
+.transitionWidth {
+  transition: width 1s ease;
+}

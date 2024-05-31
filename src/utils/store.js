@@ -208,27 +208,60 @@ export const userTabsLink = [
     slug: "dashboard",
   },
   {
-    title: "Attendance",
+    title: "Profile",
     icon: <FaArrowsTurnToDots />,
-    link: "/attendance",
-    slug: "attendance",
+    link: "/profile",
+    slug: "profile",
   },
   {
-    title: "Leave Managment",
+    title: "Events",
     icon: <FaCalendarDay />,
-    link: "/leave",
-    slug: "leave",
+    link: "/viewevents",
+    slug: "viewevents",
+  },
+  // {
+  //   title: "Complaints",
+  //   icon: <TfiWrite />,
+  //   link: "/complaints",
+  //   slug: "complaints",
+  // },
+  // {
+  //   title: "Profile",
+  //   icon: <CgProfile />,
+  //   link: "/profile",
+  //   slug: "profile",
+  // },
+];
+
+export const adminTabsLink = [
+  {
+    title: "Dashboard",
+    icon: <MdDashboard />,
+    link: "/admin",
+    slug: "admin",
   },
   {
-    title: "Complaints",
-    icon: <TfiWrite />,
-    link: "/complaints",
-    slug: "complaints",
+    title: "All Users",
+    icon: <FaArrowsTurnToDots />,
+    link: "/admin/users",
+    slug: "users",
   },
+  {
+    title: "Events",
+    icon: <FaCalendarDay />,
+    link: "/admin/events",
+    slug: "events",
+  },
+  // {
+  //   title: "Complaints",
+  //   icon: <TfiWrite />,
+  //   link: "/complaints",
+  //   slug: "complaints",
+  // },
   {
     title: "Profile",
     icon: <CgProfile />,
-    link: "/profile",
+    link: "/admin/profile",
     slug: "profile",
   },
 ];
@@ -300,16 +333,6 @@ export const teamsData = [
     img: "/afolabi.png",
   },
   {
-    name: "Godwin LLiya Mathaias",
-    desc: "IGTA Facilitator/Coordinator",
-    img: "/godwin.jpeg",
-  },
-  {
-    name: "Yusuf Moshood Olayinka ",
-    desc: "IGTA Facilitator",
-    img: "/moshood.jpeg",
-  },
-  {
     name: "Engr. Godwin A Adoga",
     desc: "IGTA Facilitator Class V",
     img: "/godwin.jpg",
@@ -332,7 +355,7 @@ export const teamsData = [
   {
     name: "Engr. Aminu, K. A",
     desc: "IGTA Cordinator Lagos State",
-    img: "/aminu.jpg",
+    img: "/aminu.png",
   },
   {
     name: "Bebenimibo Seyiefa Esther",

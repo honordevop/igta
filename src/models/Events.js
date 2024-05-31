@@ -2,15 +2,17 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const depositSchema = new Schema(
+const eventSchema = new Schema(
   {
-    date: {
-      type: Date,
-      required: true,
+    duration: {
+      type: String,
     },
     title: {
       type: String,
       required: true,
+    },
+    image: {
+      type: String,
     },
     description: {
       type: String,
@@ -18,16 +20,11 @@ const depositSchema = new Schema(
     },
     facilitator: {
       type: String,
-      required: true,
     },
     time: {
       type: String,
     },
     mode: {
-      type: String,
-      required: true,
-    },
-    partner: {
       type: String,
     },
     location: {
@@ -41,5 +38,4 @@ const depositSchema = new Schema(
 );
 
 //If the Post collection does not exist create a new one.
-export default mongoose.models.Deposit ||
-  mongoose.model("Deposit", depositSchema);
+export default mongoose.models.Event || mongoose.model("Event", eventSchema);

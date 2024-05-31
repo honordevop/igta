@@ -1,5 +1,5 @@
 import Button from "@/UI/Button";
-import { aboutData } from "@/utils/store";
+import { aboutData } from "@/Utils/store";
 import Image from "next/image";
 import React from "react";
 

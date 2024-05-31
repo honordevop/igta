@@ -1,4 +1,4 @@
-import { heroFeatures } from "@/utils/store";
+import { heroFeatures } from "@/Utils/store";
 import Image from "next/image";
 import React from "react";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";

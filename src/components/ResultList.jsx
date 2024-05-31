@@ -1,4 +1,4 @@
-import { results } from "@/utils/store";
+import { results } from "@/Utils/store";
 import React from "react";
 
 const ResultList = () => {

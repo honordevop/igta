@@ -1,28 +1,22 @@
-import httpClient from "@/Utils/httpClient";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const useRData = () => {
   const [data, setData] = useState({});
   const [error, setError] = useState({});
-  // const [showModal, setShowModal] = useState(false)
-
-  //   const valueIsValid = validateValue(inputState.value);
-  //   const hasError = !valueIsValid && inputState.isTouched;
 
   const fetchData = async (url) => {
     try {
-      const response = await httpClient.get(url);
-      // const response = await httpClient.get("//localhost:5000/profile");
-      // console.log(response);
+      const response = await fetch(url);
 
-      setData(response);
+      const res = await response.json();
+      setData(res);
     } catch (error) {
       setError(error?.response);
+      toast(error?.response.message);
       // console.log(error?.response);
     }
   };
-
-  // console.log(error);
 
   return {
     fetchData,

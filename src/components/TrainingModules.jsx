@@ -1,5 +1,5 @@
 "use client";
-import { trainingModule } from "@/utils/store";
+import { trainingModule } from "@/Utils/store";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";

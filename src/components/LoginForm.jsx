@@ -8,20 +8,31 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { BeatLoader, BounceLoader } from "react-spinners";
 import { signIn, useSession } from "next-auth/react";
+import { BsCaretLeftSquareFill } from "react-icons/bs";
+import { IoCaretBackCircleOutline } from "react-icons/io5";
 
 const LoginForm = ({ handleShowSignUpForm }) => {
   const router = useRouter();
   const session = useSession();
 
   useEffect(() => {
-    if (session.status === "authenticated") {
+    if (
+      session.status === "authenticated" &&
+      session.data.email !== process.env.NEXT_PUBLIC_MAIL_CHECK
+    ) {
       router.push("/dashboard");
+    } else if (
+      session.status === "authenticated" &&
+      session.data.email === process.env.NEXT_PUBLIC_MAIL_CHECK
+    ) {
+      router.push("/admin");
     }
   }, [session.status, router]);
   const [passwordType, setPasswordType] = useState("password");
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loginLoading, setLoginLoading] = useState(false);
 
   const showPassword = () => {
     setPasswordType("text");
@@ -69,6 +80,7 @@ const LoginForm = ({ handleShowSignUpForm }) => {
       toast(res.error);
       setLoading(false);
       if (!res.error) {
+        setLoginLoading(true);
         router?.push("/dashboard");
       }
       setTimeout(() => {
@@ -77,9 +89,9 @@ const LoginForm = ({ handleShowSignUpForm }) => {
     });
   };
 
-  if (session.status === "loading") {
+  if (session.status === "loading" || loginLoading) {
     return (
-      <div className=" h-[100vh] w-[100vw] flex flex-col items-center justify-center">
+      <div className=" h-[100vh] w-full flex flex-col items-center justify-center">
         <BounceLoader color="#b52624" size={100} />
       </div>
     );
@@ -90,6 +102,14 @@ const LoginForm = ({ handleShowSignUpForm }) => {
       <div className="bg-gray-200 w-full min-h-screen flex items-center justify-center">
         <div className="w-full pb-8 flex flex-col items-center justify-center">
           <div className="bg-white w-5/6 md:w-3/4 lg:w-2/3 xl:w-[500px] 2xl:w-[550px] mt-8 mx-0 md:mx-auto px-4 md:px-16 py-8 rounded-lg shadow-2xl">
+            <Link
+              href="/"
+              className="w-max text-red-500 rounded-lg py-2 hover:shadow-xl transition duration-150 uppercase font-semibold flex gap-4 items-center text-center"
+            >
+              <IoCaretBackCircleOutline color="red" className="text-2xl" />
+              {/* <BsCaretLeftSquareFill color="#fff" className="text-2xl" /> */}
+              <p>Home</p>
+            </Link>
             <h2 className="text-center text-2xl font-bold tracking-wide text-gray-800">
               Sign In
             </h2>
@@ -148,6 +168,13 @@ const LoginForm = ({ handleShowSignUpForm }) => {
                   )}
                 </div>
               </div>
+              <Link href="/passwordrecovery" className="flex flex-col my-4">
+                <div>
+                  <p className="text-red-500 cursor-pointer">
+                    Forgot Password? Recover here
+                  </p>
+                </div>
+              </Link>
               {error && <p className="text-red-500">{error}</p>}
               <div className="w-full my-4 flex items-center justify-end space-x-4">
                 {!loading && (

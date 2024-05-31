@@ -7,11 +7,21 @@ const AboutPageLogo = () => {
       <div className="container">
         <div className="w-full flex gap-8 items-center justify-center flex-wrap">
           <div className=" relative w-[150px] h-[75px]">
-            <Image src="/iec.png" fill className="object-contain" />
+            <Image
+              src="/iec.png"
+              fill
+              className="object-contain"
+              alt="iec logo"
+            />
           </div>
 
           <div className=" relative w-[150px] h-[75px]">
-            <Image src="/caclogo.png" fill className="object-contain" />
+            <Image
+              src="/caclogo.png"
+              fill
+              className="object-contain"
+              alt="cac logo"
+            />
           </div>
 
           <div className=" relative w-[150px] h-[75px]">
@@ -19,11 +29,17 @@ const AboutPageLogo = () => {
               src="/africatraininginstitute.png"
               fill
               className="object-contain"
+              alt="africatraininginstitute logo"
             />
           </div>
 
           <div className=" relative w-[150px] h-[75px]">
-            <Image src="/ilo.png" fill className="object-contain" />
+            <Image
+              src="/ilo.png"
+              fill
+              className="object-contain"
+              alt="ilo logo"
+            />
           </div>
         </div>
       </div>

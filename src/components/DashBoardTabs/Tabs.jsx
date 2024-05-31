@@ -1,24 +1,28 @@
 "use client";
 
-import { userTabsLink } from "@/utils/store";
+import { useGlobalContext } from "@/contextAPI/context";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 import { HiOutlineLogout } from "react-icons/hi";
 
-const Tabs = ({ currentPage }) => {
+const Tabs = ({ currentPage, tabLink }) => {
   //   console.log(currentPage);
 
+  const { onPageLoading } = useGlobalContext();
+
   return (
-    <div className="w-full h-full secondaryBgColor overflow-y-scroll hideScrollBar">
+    <div className="w-full h-full secondaryBgColor hideScrollBar">
       <ul className="flex flex-col gap-5 pt-[6rem]">
-        {userTabsLink.map((link, i) => (
+        {tabLink.map((link, i) => (
           <Link
             href={link.link}
+            onClick={link.link.includes(currentPage) ? null : onPageLoading}
             shallow
             key={i}
             style={
               link.slug == currentPage
-                ? { backgroundColor: "#562345" }
+                ? { backgroundColor: "#8a2928" }
                 : { backgroundColor: "transparent" }
             }
             className="pl-6 pr-2 py-4"
@@ -37,8 +41,8 @@ const Tabs = ({ currentPage }) => {
           style={{ backgroundColor: "transparent" }}
           className="pl-6 pr-2 py-4"
           onClick={() => {
-            handlePageLoading();
-            logOutHandler();
+            onPageLoading();
+            signOut();
           }}
         >
           <div className="flex gap-5 items-center cursor-pointer">

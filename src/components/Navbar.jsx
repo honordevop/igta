@@ -5,7 +5,7 @@ import Image from "next/image";
 // import styles from "./navbar.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
-import { navLinks } from "@/utils/store";
+import { navLinks } from "@/Utils/store";
 import MobileMenu from "./MobileMenu";
 import { signOut, useSession } from "next-auth/react";
 // import Button from "@/UI/Button";
@@ -43,16 +43,25 @@ const Navbar = () => {
           </div>
 
           {session.status === "authenticated" ? (
-            <div
-              onClick={signOut}
-              className="primaryBgColor py-1 px-3 text-xl font-semibold w-max rounded-md text-white cursor-pointer"
-            >
-              Sign Out
+            <div className="hidden md:flex gap-2 ">
+              <Link
+                href="/dashboard"
+                className="primaryBgColor py-1 px-3 text-xl font-semibold w-max rounded-md text-white cursor-pointer"
+              >
+                Dashboard
+              </Link>
+
+              <div
+                onClick={signOut}
+                className="primaryBgColor py-1 px-3 text-xl font-semibold w-max rounded-md text-white cursor-pointer"
+              >
+                Sign Out
+              </div>
             </div>
           ) : (
             <Link
-              href="#"
-              className="primaryBgColor py-1 px-3 text-xl font-semibold w-max rounded-md text-white cursor-pointer"
+              href="/auth"
+              className="hidden md:block primaryBgColor py-1 px-3 text-xl font-semibold w-max rounded-md text-white cursor-pointer"
             >
               Sign In
             </Link>

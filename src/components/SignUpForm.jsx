@@ -7,7 +7,7 @@ import { IoMdEyeOff } from "react-icons/io";
 import Image from "next/image";
 import useInput from "@/hooks/use-input";
 import { toast } from "react-toastify";
-import { designationOptions, genderOptions } from "@/utils/store";
+import { designationOptions, genderOptions } from "@/Utils/store";
 import { useRouter } from "next/navigation";
 import { BeatLoader } from "react-spinners";
 
@@ -129,6 +129,27 @@ const SignUpForm = ({ handleHideSignUpForm }) => {
     designationIsValid &&
     passwordCheckIsValid;
 
+  const sendWelcomeEmail = async () => {
+    try {
+      const res = await fetch("/api/sendmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          fullname: fullName,
+        }),
+      });
+      const data = await res.json();
+      //   console.log(res.status);
+      // toast(data.message);
+    } catch (error) {
+      console.log(error);
+      // setLoading(false);
+      // toast.warn(error.message);
+    }
+  };
   const register = async () => {
     // console.log(`${email} + ${password} + ${firstName} + ${lastName} `);
     try {
@@ -152,6 +173,7 @@ const SignUpForm = ({ handleHideSignUpForm }) => {
       const data = await res.json();
       // console.log(data);
       toast(data.message);
+      sendWelcomeEmail();
       //   res.status === 201 && setRegSuccess(true);
       setTimeout(() => {
         emailInputReset();
@@ -167,7 +189,7 @@ const SignUpForm = ({ handleHideSignUpForm }) => {
       setLoading(false);
       setTimeout(() => {
         if (res.status === 201) {
-          router.push("/dashboard/account?success=Account has been created");
+          router.push("/?success=Account has been created");
         }
       }, 3000);
     } catch (error) {
@@ -201,7 +223,7 @@ const SignUpForm = ({ handleHideSignUpForm }) => {
 
     // console.log(`${firstName} ${lastName} ${password} ${passwordCheck}`)
 
-    console.log(userEntries);
+    // console.log(userEntries);
 
     register();
 
@@ -230,7 +252,7 @@ const SignUpForm = ({ handleHideSignUpForm }) => {
               onClick={handleHideSignUpForm}
             >
               Already have an account? <br />{" "}
-              <span className="text-blue-600 hover:text-blue-700 hover:underline cursor-pointer">
+              <span className="text-blue-600 hover:text-blue-700 font-bold hover:underline cursor-pointer">
                 Sign in here
               </span>
             </p>
@@ -406,14 +428,14 @@ const SignUpForm = ({ handleHideSignUpForm }) => {
                 <label htmlFor="" className="text-gray-700">
                   I accept the{" "}
                   <Link
-                    href="/terms"
+                    href="https://igtainternational.org/terms"
                     className="text-blue-600 hover:text-blue-700 hover:underline"
                   >
                     terms
                   </Link>{" "}
                   and{" "}
                   <Link
-                    href="/privacy"
+                    href="https://igtainternational.org/privacy"
                     className="text-blue-600 hover:text-blue-700 hover:underline"
                   >
                     privacy policy

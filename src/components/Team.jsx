@@ -1,6 +1,6 @@
 "use client";
 
-import { teamsData } from "@/utils/store";
+import { teamsData } from "@/Utils/store";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -48,7 +48,7 @@ const Team = () => {
               >
                 <Image
                   src={elem.img}
-                  alt=""
+                  alt={elem.name}
                   fill
                   // width={400}
                   // height={400}

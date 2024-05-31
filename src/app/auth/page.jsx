@@ -5,7 +5,7 @@ import Forms from "@/components/Forms";
 const Register = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center h-max md:h-[100vh] ">
-      <div className="w-full flex h-full mt-[80px]">
+      <div className="w-full flex h-full">
         <div className="hidden flex-1 w-full h-full md:flex flex-col items-center justify-center">
           <div className="relative w-full h-full bg-yellow-50">
             <Image
@@ -17,7 +17,7 @@ const Register = () => {
             />
           </div>
         </div>
-        <div className="flex-1 overflow-y-scroll scrollWidth0">
+        <div className="flex-1 overflow-y-scroll scrollWidth0 w-full">
           <Forms />
         </div>
       </div>

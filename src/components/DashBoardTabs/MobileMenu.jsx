@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RxCaretDown } from "react-icons/rx";
 import MobileTab from "./MobileTab";
 
-const MobileMenu = ({ currentPage }) => {
+const MobileMenu = ({ currentPage, tabLink }) => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
   const handleShowMobileNav = () => {
@@ -23,7 +23,9 @@ const MobileMenu = ({ currentPage }) => {
         <RxCaretDown className="text-lg" />
       </div>
 
-      {showMobileNav && <MobileTab currentPage={currentPage} />}
+      {showMobileNav && (
+        <MobileTab currentPage={currentPage} tabLink={tabLink} />
+      )}
     </div>
   );
 };
