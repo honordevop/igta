@@ -7,12 +7,12 @@ export async function POST(request) {
 
   try {
     const transporter = nodemailer.createTransport({
-      //   service: "ornorit.com.ng:2096",
-      host: "mail.ornorit.com.ng",
+      service: "zoho",
+      host: "smtpro.zoho.in",
       port: 465,
       secure: true,
       auth: {
-        user: "info@ornorit.com.ng",
+        user: process.env.NEXT_PUBLIC_MAIL_CHECK,
         pass: process.env.PASSWORD,
       },
     });
@@ -26,7 +26,7 @@ export async function POST(request) {
     // });
 
     const mailOption = {
-      from: "info@ornorit.com.ng",
+      from: "admin@igtainternational.org",
       to: `${email}`,
       subject: "Welcome Email form IGTA",
       html: `

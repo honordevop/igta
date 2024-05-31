@@ -21,9 +21,7 @@ const EventsList = ({ data }) => {
           {data?.map((item, index) => (
             <tr key={index} className="cursor-pointer text-sm md:text-base">
               <td className="border px-2 py-2 w-max ">{index}</td>
-              <td className="border px-2 py-2 w-max ">
-                {item?.date.slice(0, 10)}
-              </td>
+              <td className="border px-2 py-2 w-max ">{item?.date}</td>
               <td className="border px-2 py-2 w-max ">{item?.time}</td>
               <td className="border px-2 py-2 w-max ">{item?.title}</td>
               <td className="border px-2 py-2 w-max ">{item?.facilitator}</td>

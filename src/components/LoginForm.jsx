@@ -72,7 +72,7 @@ const LoginForm = ({ handleShowSignUpForm }) => {
     setLoading(true);
 
     signIn("credentials", {
-      email: email,
+      email: email.toLowerCase(),
       password: password,
       redirect: false,
     }).then((res) => {

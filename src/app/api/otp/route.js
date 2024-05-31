@@ -46,18 +46,17 @@ export const POST = async (request) => {
     }
 
     const transporter = nodemailer.createTransport({
-      //   service: "ornorit.com.ng:2096",
-      host: "mail.ornorit.com.ng",
+      host: "zoho",
       port: 465,
       secure: true,
       auth: {
-        user: "info@ornorit.com.ng",
+        user: "admin@igtainternational.org",
         pass: process.env.PASSWORD,
       },
     });
 
     const mailOption = {
-      from: "info@ornorit.com.ng",
+      from: "admin@igtainternational.org",
       to: `${email}`,
       subject: "Account Password Recovery - IGTA",
       html: `
