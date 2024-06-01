@@ -16,6 +16,10 @@ import { toast } from "react-toastify";
 import EventList from "@/components/EventList";
 import EventsList from "@/components/EventsList";
 import CreateEventForm from "@/components/CreateEventForm";
+import useSWR from "swr";
+import UpdateEventForm from "@/components/UpdateEventForm";
+
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 const Dashboard = () => {
   const pathname = usePathname();
@@ -43,18 +47,74 @@ const Dashboard = () => {
   const [addPadding, setAddPadding] = useState("0");
   const [leftWidth, setLefttWidth] = useState("25");
   const [changeWidth, setChangeWidth] = useState(false);
-  const [eventsList, setEventsList] = useState([]);
+  const [eventList, setEvent] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [showEventForm, setShowEventForm] = useState(false);
+  const [id, setId] = useState();
 
-  const fetchEventData = async () => {
+  const [showUpdateEventForm, setShowUpdateEventForm] = useState(false);
+
+  // const fetchEventData = async (id) => {
+  //   console.log("called");
+  //   setLoading(true);
+  //   try {
+  //     const response = await fetch(`/api/events/${id}`);
+
+  //     const res = await response.json();
+  //     setEvent(res.event);
+  //     // console.log(res);
+  //     setTimeout(() => {
+  //       setLoading(false);
+  //     }, 2000);
+  //   } catch (error) {
+  //     // setError(error?.response);
+  //     setLoading(false);
+  //     toast(error?.message);
+
+  //     console.log(error);
+  //   }
+  // };
+
+  const hideUpdateEventForm = () => {
+    setShowUpdateEventForm(false);
+  };
+
+  const sendId = (id) => {
+    setId(id);
+  };
+  const showUpdateEventFormHandler = (id) => {
+    sendId(id);
+    setShowUpdateEventForm(true);
+  };
+
+  const { data, mutate, error } = useSWR("/api/events", fetcher);
+
+  // console.log(eventList);
+  const deleteEvent = async (id) => {
+    setDeleting(true);
+    const userConfirmed = confirm("Are you sure you want to delete Event?");
+
+    if (!userConfirmed) {
+      setDeleting(false);
+      return;
+    }
+
     try {
-      const response = await fetch("/api/events");
+      const response = await fetch(`/api/events/${id}`, {
+        method: "DELETE",
+      });
 
       const res = await response.json();
-      setEventsList(res.events);
+      mutate();
+      toast(res?.message);
+
+      setTimeout(() => {
+        setDeleting(false);
+      }, 1500);
     } catch (error) {
       // setError(error?.response);
+      setDeleting(false);
       toast(error?.response.message);
       // console.log(error?.response);
     }
@@ -66,12 +126,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (session?.user?.email) {
-      fetchData(`/api/user?email=${session.user.email}`);
+      fetchData(`/api/user?email=${session.user.email}`, {
+        next: { revalidate: 10 },
+      });
     }
 
-    return () => {
-      fetchEventData();
-    };
+    // return () => {
+    //   fetchEventData();
+    // };
   }, [session?.user?.email]);
 
   // console.log(eventsList);
@@ -80,22 +142,11 @@ const Dashboard = () => {
     if (userData.user) {
       offPageLoading();
     }
-  }, [userData.user]);
+  }, [userData?.user]);
 
   useEffect(() => {
     handleWidthChage();
   }, [changeWidth, leftWidth]);
-
-  // if (err.status === 401) {
-  //   console.log(err.status);
-  //   window.location.href = "/";
-  // }
-
-  // useEffect(() => {
-  //   if (profileData.status === 200) {
-  //     setLoading(false);
-  //   }
-  // }, [profileData.status]);
 
   const turnOn = () => {
     setChangeWidth((prev) => !prev);
@@ -122,20 +173,6 @@ const Dashboard = () => {
       </div>
     );
   }
-
-  // if (loading) {
-  //   return (
-  //     <div className="w-full h-screen flex items-center justify-center">
-  //       <div>
-  //         <BounceLoader className="" size={80} color="#b52624" />
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
-  // if (session?.user?.email !== process.env.NEXT_PUBLIC_MAIL_CHECK) {
-  //   router?.push("/dashboard");
-  // }
 
   if (
     status === "authenticated" &&
@@ -208,15 +245,30 @@ const Dashboard = () => {
                   <h1 className="font-bold text-lg my-6">
                     Events/Training Records
                   </h1>
-                  <EventsList data={eventsList} />
+                  <EventsList
+                    data={data?.events}
+                    deleteHandler={deleteEvent}
+                    showUpdateEventFormHandler={showUpdateEventFormHandler}
+                    deleteLoading={deleting}
+                  />
                 </div>
                 {/* <EventList /> */}
               </div>
             </div>
           </div>
 
-          {showEventForm && (
-            <CreateEventForm hideForm={hideEventsFormHandler} />
+          {showEventForm && !showUpdateEventForm && (
+            <CreateEventForm hideForm={hideEventsFormHandler} mutate={mutate} />
+          )}
+
+          {showUpdateEventForm && !showEventForm && (
+            <UpdateEventForm
+              id={id}
+              data={eventList}
+              hideUpdateEventForm={hideUpdateEventForm}
+              mutate={mutate}
+              dataLoading={loading}
+            />
           )}
         </div>
       </div>

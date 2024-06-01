@@ -1,15 +1,12 @@
 "use client";
-import Link from "next/link";
 import React, { useState } from "react";
-import { AiFillEye, AiOutlineCloseCircle } from "react-icons/ai";
-import { IoMdEyeOff } from "react-icons/io";
-import Image from "next/image";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import useInput from "@/hooks/use-input";
 import { toast } from "react-toastify";
 import { BeatLoader, ClimbingBoxLoader } from "react-spinners";
 import { MdOutlineCloudDone } from "react-icons/md";
 
-const CreateEventForm = ({ hideForm }) => {
+const CreateEventForm = ({ hideForm, mutate }) => {
   const [regSuccess, setRegSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -93,6 +90,7 @@ const CreateEventForm = ({ hideForm }) => {
     inputBlurHandler: modeBlurHandler,
     reset: modeInputReset,
   } = useInput((value) => value.trim() !== "");
+  const [error, setError] = useState();
 
   const [inputs, setInputs] = useState({
     title: "",
@@ -123,6 +121,13 @@ const CreateEventForm = ({ hideForm }) => {
   };
 
   const upload = async () => {
+    if (file === undefined) {
+      setError("No file chosen");
+      setTimeout(() => {
+        setError("");
+      }, 1500);
+      return;
+    }
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "igtapreset");
@@ -167,6 +172,7 @@ const CreateEventForm = ({ hideForm }) => {
         }),
       });
 
+      mutate();
       const data = await res.json();
       //   console.log(data);
       toast(data.message);
@@ -174,7 +180,7 @@ const CreateEventForm = ({ hideForm }) => {
       setRegSuccess(true);
       //   router.push(`/product/${data.id}`);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setLoading(false);
       toast.warn(error.message);
     }
@@ -208,7 +214,7 @@ const CreateEventForm = ({ hideForm }) => {
         },
         body: JSON.stringify({
           title,
-          date,
+          duration,
           image,
           description,
           facilitator,
@@ -304,7 +310,7 @@ const CreateEventForm = ({ hideForm }) => {
                   required
                   name="title"
                   className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-                  placeholder="Enter your Super Admin Fullname"
+                  placeholder="Enter Event Title"
                   onChange={handleChange}
                   //   value={title}
                   //   onBlur={titleBlurHandler}
@@ -324,9 +330,9 @@ const CreateEventForm = ({ hideForm }) => {
                   type="text"
                   required
                   name="duration"
-                  id="date"
+                  id="duration"
                   className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-                  placeholder="Event Date"
+                  placeholder="Event Duration"
                   onChange={handleChange}
                   //   value={date}
                   //   onBlur={dateBlurHandler}
@@ -431,7 +437,7 @@ const CreateEventForm = ({ hideForm }) => {
                   required
                   name="mode"
                   className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-                  placeholder="Facilitator Name"
+                  placeholder="Event Mode"
                   onChange={handleChange}
                   //   value={mode}
                   //   onChange={modeChangeHandler}
@@ -517,7 +523,7 @@ const CreateEventForm = ({ hideForm }) => {
             <MdOutlineCloudDone color="red" className="text-7xl" />
             <p className="text-lg font-semibold">Event Created Successfully</p>
             <div
-              className="px-5 py-2 primaryBgColor hover:primaryBgVolorLight font-semibold text-lg text-white rounded-lg"
+              className="px-5 py-2 primaryBgColor hover:primaryBgVolorLight font-semibold text-lg text-white rounded-lg cursor-pointer"
               onClick={() => {
                 hideForm();
                 setRegSuccess(false);

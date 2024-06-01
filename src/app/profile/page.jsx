@@ -62,7 +62,7 @@ const Dashboard = () => {
     if (userData.user) {
       offPageLoading();
     }
-  }, [userData.user]);
+  }, [userData?.user]);
 
   useEffect(() => {
     handleWidthChage();

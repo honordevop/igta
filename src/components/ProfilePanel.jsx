@@ -5,10 +5,6 @@ import Image from "next/image";
 import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
 
-const isObjectEmpty = (objectName) => {
-  return Object.keys(objectName).length === 0;
-};
-
 const ProfilePanel = ({ profileData }) => {
   //   console.log(profileData);
   // const [loading, setLoading] = useState(false);
@@ -19,13 +15,13 @@ const ProfilePanel = ({ profileData }) => {
 
   const handleChangeImg = (e) => {
     const target = e.target;
-    console.log(target);
+    // console.log(target);
     const item = target.files[0];
     setFile(item);
   };
 
   const upload = async () => {
-    console.log(file);
+    // console.log(file);
     if (file === undefined) {
       setError("No file chosen");
       setTimeout(() => {

@@ -69,7 +69,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (session?.user?.email) {
-      fetchData(`/api/user?email=${session.user.email}`);
+      fetchData(`/api/user?email=${session.user.email}`, {
+        next: { revalidate: 10 },
+      });
     }
 
     return () => {
@@ -83,7 +85,7 @@ const Dashboard = () => {
     if (userData.user) {
       offPageLoading();
     }
-  }, [userData.user]);
+  }, [userData?.user]);
 
   useEffect(() => {
     handleWidthChage();

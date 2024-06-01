@@ -2,16 +2,33 @@ import { NextResponse } from "next/server";
 import connect from "@/Utils/db";
 import Events from "@/models/Events";
 
-export async function PATCH(request, { params }) {
+export async function GET(request, { params }) {
   const { id } = params;
-
-  const { status } = await request.json();
+  // const body = await request.json();
 
   //fetch
   try {
     await connect();
 
-    await Events.findByIdAndUpdate(id, { status });
+    const event = await Events.findById(id);
+
+    return NextResponse.json({ event }, { status: 200 });
+  } catch (error) {
+    // console.log(error);
+    return NextResponse.json({ message: "Database Error" }, { status: 500 });
+  }
+}
+
+export async function PATCH(request, { params }) {
+  const { id } = params;
+
+  const body = await request.json();
+
+  //fetch
+  try {
+    await connect();
+
+    await Events.findByIdAndUpdate(id, body);
 
     return NextResponse.json({ message: "Event Updated" }, { status: 201 });
   } catch (error) {
@@ -23,6 +40,7 @@ export async function PATCH(request, { params }) {
 export const DELETE = async (request, { params }) => {
   //fetch
   const { id } = params;
+
   try {
     await connect();
 

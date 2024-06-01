@@ -189,11 +189,11 @@ const SignUpForm = ({ handleHideSignUpForm }) => {
       setLoading(false);
       setTimeout(() => {
         if (res.status === 201) {
-          router.push("/?success=Account has been created");
+          router.push("/auth?success=Account has been created");
         }
       }, 3000);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       //   setLoginErrorMessage(error.response.data.message);
       setLoading(false);
       toast.warn(error.message);
