@@ -360,7 +360,7 @@ export const teamsData = [
   {
     name: "Engr. Aminu, K. A",
     desc: "IGTA Cordinator Lagos State",
-    img: "/aminu.png",
+    img: "/aminu.jpg",
   },
   {
     name: "Bebenimibo Seyiefa Esther",
