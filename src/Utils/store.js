@@ -353,6 +353,11 @@ export const teamsData = [
     img: "/ismail.jpg",
   },
   {
+    name: "Mrs. Olabode Afolake Olayinka",
+    desc: "IGTA Coordinator/Consultant - Lagos State",
+    img: "/olabode.jpeg",
+  },
+  {
     name: "Engr. Aminu, K. A",
     desc: "IGTA Cordinator Lagos State",
     img: "/aminu.png",
