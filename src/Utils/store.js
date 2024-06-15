@@ -195,8 +195,10 @@ export const genderOptions = ["Gender", "Male", "Female", "Prefer Not to Say"];
 
 export const designationOptions = [
   "Designation",
-  "Member",
-  "Mentor",
+  "Student",
+  "Facilitator",
+  "Coordinator",
+  "Trainer",
   "Ambassador",
 ];
 
@@ -252,12 +254,12 @@ export const adminTabsLink = [
     link: "/admin/events",
     slug: "events",
   },
-  // {
-  //   title: "Complaints",
-  //   icon: <TfiWrite />,
-  //   link: "/complaints",
-  //   slug: "complaints",
-  // },
+  {
+    title: "Trainings",
+    icon: <TfiWrite />,
+    link: "/admin/training",
+    slug: "complaints",
+  },
   {
     title: "Profile",
     icon: <CgProfile />,

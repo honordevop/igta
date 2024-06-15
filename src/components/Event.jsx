@@ -38,7 +38,7 @@ const Event = () => {
             <p className="text-3xl  font-semibold">
               6 Months Free Cybersecurity Training with CYBERHEROES
             </p>
-            <p className="` text-lg">UNLEASHING CREATIVITY IN PHOTOGRAPHY</p>
+            {/* <p className="` text-lg">UNLEASHING CREATIVITY IN PHOTOGRAPHY</p> */}
 
             <ul className="w-full flex flex-col gap-3 list-inside list-disc items-start">
               {" "}

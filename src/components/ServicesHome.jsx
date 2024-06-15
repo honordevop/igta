@@ -36,7 +36,7 @@ const ServicesHome = () => {
               and much more.
             </p>
 
-            <Link href="#">
+            <Link href="/services">
               <p className="primaryBgColor rounded-lg p-2 px-4 text-white font-semibold text-center w-max">
                 Expolore Our Services
               </p>
