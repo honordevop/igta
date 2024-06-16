@@ -33,9 +33,9 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Syne+Tactile&display=swap"
           rel="stylesheet"
         ></link>
-        <Script type="text/javascript">
-          onLoad=
-          {() => {
+        <Script
+          type="text/javascript"
+          onLoad={() => {
             (window.heap = window.heap || []),
               (heap.load = function (e, t) {
                 (window.heap.appid = e), (window.heap.config = t = t || {});
@@ -73,7 +73,7 @@ export default function RootLayout({ children }) {
               });
             heap.load("1598158189");
           }}
-        </Script>
+        />
       </Head>
       <body className={`${inter.className} ${space_grotesk.className} `}>
         <AppProvider>
