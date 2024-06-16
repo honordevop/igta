@@ -12,32 +12,23 @@ const UpdateTrainingForm = ({ id, hideUpdateEventForm, mutate }) => {
   const [dataLoading, setDataLoading] = useState(false);
 
   const [title, setTitle] = useState();
-  const [duration, setDuration] = useState();
   const [description, setDescription] = useState();
-  const [facilitator, setFacilitator] = useState();
-  const [time, setTime] = useState();
-  const [location, setLocation] = useState();
-  const [link, setLink] = useState();
-  const [mode, setMode] = useState();
+  const [category, setCategory] = useState();
+  // const [link, setLink] = useState();
   // console.log(title);
 
   const fetchEventData = async (id) => {
     // console.log("called");
     setDataLoading(true);
     try {
-      const response = await fetch(`/api/events/${id}`);
+      const response = await fetch(`/api/training/${id}`);
 
       const res = await response.json();
       const data = res.event;
       // setData(res.event);
       setTitle(data.title);
-      setDuration(data?.duration);
-      setDescription(data?.description);
-      setFacilitator(data?.facilitator);
-      setTime(data?.time);
-      setLocation(data?.location);
-      setLink(data?.link);
-      setMode(data?.mode);
+      setDescription(data?.desc);
+      setCategory(data?.category);
       // console.log(res);
       setTimeout(() => {
         setDataLoading(false);
@@ -60,26 +51,13 @@ const UpdateTrainingForm = ({ id, hideUpdateEventForm, mutate }) => {
   const titleChangeHandler = (e) => {
     setTitle(e.target.value);
   };
-  const durationChangeHandler = (e) => {
-    setDuration(e.target.value);
-  };
+
   const descriptionChangeHandler = (e) => {
     setDescription(e.target.value);
   };
-  const facilitatorChangeHandler = (e) => {
-    setFacilitator(e.target.value);
-  };
-  const locationChangeHandler = (e) => {
-    setLocation(e.target.value);
-  };
-  const timeChangeHandler = (e) => {
-    setTime(e.target.value);
-  };
-  const modeChangeHandler = (e) => {
-    setMode(e.target.value);
-  };
-  const linkChangeHandler = (e) => {
-    setLink(e.target.value);
+
+  const categoryChangeHandler = (e) => {
+    setCategory(e.target.value);
   };
 
   const [file, setFile] = useState();
@@ -89,11 +67,11 @@ const UpdateTrainingForm = ({ id, hideUpdateEventForm, mutate }) => {
     setFile(item);
   };
 
-  const handleChange = (e) => {
-    setInputs((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
+  // const handleChange = (e) => {
+  //   setInputs((prev) => {
+  //     return { ...prev, [e.target.name]: e.target.value };
+  //   });
+  // };
 
   const upload = async () => {
     if (file === undefined) {
@@ -136,7 +114,7 @@ const UpdateTrainingForm = ({ id, hideUpdateEventForm, mutate }) => {
 
     try {
       const url = await upload();
-      const res = await fetch(`/api/events/${id}`, {
+      const res = await fetch(`/api/training/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -144,13 +122,8 @@ const UpdateTrainingForm = ({ id, hideUpdateEventForm, mutate }) => {
         body: JSON.stringify({
           image: url,
           title,
-          duration,
-          time,
-          mode,
-          location,
-          link,
-          description,
-          facilitator,
+          desc: description,
+          category,
         }),
       });
 
@@ -196,34 +169,16 @@ const UpdateTrainingForm = ({ id, hideUpdateEventForm, mutate }) => {
                   />
                 </div>
 
-                <div className="flex flex-col my-4">
-                  <label htmlFor="" className="font-semibold">
-                    Duration
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    name="duration"
-                    id="date"
-                    className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-                    placeholder="Event Date"
-                    // onChange={handleChange}
-                    value={duration}
-                    // onBlur={durationBlurHandler}
-                    onChange={durationChangeHandler}
-                  />
-                </div>
-
                 <div className="">
                   <label htmlFor="" className="font-semibold">
                     Description
                   </label>
                   <div className="w-full border border-gray-300 focus:border-gray-300 focus:outline-none focus:ring-0  rounded">
                     <textarea
-                      className="w-[70%] p-2  focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
+                      className="w-full p-2  focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
                       placeholder="Event Description"
                       required
-                      name="description"
+                      name="desc"
                       // onChange={handleChange}
                       value={description}
                       onChange={descriptionChangeHandler}
@@ -252,24 +207,7 @@ const UpdateTrainingForm = ({ id, hideUpdateEventForm, mutate }) => {
 
                 <div className="flex flex-col my-4">
                   <label htmlFor="" className="font-semibold">
-                    Facilitator
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    name="facilitator"
-                    className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-                    placeholder="Facilitator Name"
-                    // onChange={handleChange}
-                    value={facilitator}
-                    onChange={facilitatorChangeHandler}
-                    // onBlur={facilitatorBlurHandler}
-                  ></input>
-                </div>
-
-                <div className="flex flex-col my-4">
-                  <label htmlFor="" className="font-semibold">
-                    Time
+                    Category
                   </label>
                   <input
                     type="text"
@@ -278,58 +216,9 @@ const UpdateTrainingForm = ({ id, hideUpdateEventForm, mutate }) => {
                     className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
                     placeholder="Event Time"
                     // onChange={handleChange}
-                    value={time}
-                    onChange={timeChangeHandler}
+                    value={category}
+                    onChange={categoryChangeHandler}
                     // onBlur={timeBlurHandler}
-                  ></input>
-                </div>
-
-                <div className="flex flex-col my-4">
-                  <label htmlFor="" className="font-semibold">
-                    Mode
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    name="mode"
-                    className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-                    placeholder="Facilitator Name"
-                    // onChange={handleChange}
-                    value={mode}
-                    onChange={modeChangeHandler}
-                    // onBlur={modeBlurHandler}
-                  ></input>
-                </div>
-
-                <div className="flex flex-col my-4">
-                  <label htmlFor="" className="font-semibold">
-                    Location (Optional)
-                  </label>
-                  <input
-                    type="text"
-                    name="location"
-                    className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-                    placeholder="Event Location"
-                    // onChange={handleChange}
-                    value={location}
-                    onChange={locationChangeHandler}
-                    // onBlur={locationBlurHandler}
-                  ></input>
-                </div>
-
-                <div className="flex flex-col my-4">
-                  <label htmlFor="" className="font-semibold">
-                    Link (Optional)
-                  </label>
-                  <input
-                    type="text"
-                    name="link"
-                    className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-                    placeholder="Event Registration Link"
-                    // onChange={handleChange}
-                    value={link}
-                    onChange={linkChangeHandler}
-                    // onBlur={linkBlurHandler}
                   ></input>
                 </div>
 
@@ -369,7 +258,9 @@ const UpdateTrainingForm = ({ id, hideUpdateEventForm, mutate }) => {
         <div className=" bg-white w-[70%] h-[30%] flex flex-col items-center justify-center">
           <div className="flex flex-col gap-4 items-center justify-center">
             <MdOutlineCloudDone color="red" className="text-7xl" />
-            <p className="text-lg font-semibold">Event Updated Successfully</p>
+            <p className="text-lg font-semibold">
+              Training Updated Successfully
+            </p>
             <div
               className="px-5 py-2 primaryBgColor hover:primaryBgVolorLight font-semibold text-lg text-white rounded-lg cursor-pointer"
               onClick={() => {

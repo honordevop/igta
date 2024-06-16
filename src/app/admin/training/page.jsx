@@ -18,6 +18,7 @@ import EventsList from "@/components/EventsList";
 import useSWR from "swr";
 import CreateTrainingForm from "@/components/CreateTrainingForm";
 import UpdateTrainingForm from "@/components/UpdateTrainingForm";
+import TrainingsList from "@/components/TrainingsList";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -88,7 +89,7 @@ const Trainings = () => {
     setShowUpdateEventForm(true);
   };
 
-  const { data, mutate, error } = useSWR("/api/events", fetcher);
+  const { data, mutate, error } = useSWR("/api/training", fetcher);
 
   // console.log(eventList);
   const deleteEvent = async (id) => {
@@ -101,7 +102,7 @@ const Trainings = () => {
     }
 
     try {
-      const response = await fetch(`/api/events/${id}`, {
+      const response = await fetch(`/api/training/${id}`, {
         method: "DELETE",
       });
 
@@ -238,15 +239,13 @@ const Trainings = () => {
                     className=" bg-[#b52624] hover:bg-red-400 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition cursor-pointer duration-150 uppercase font-semibold"
                     onClick={() => setShowEventForm(true)}
                   >
-                    Create Event
+                    Create Training
                   </button>
                 </div>
                 <div>
-                  <h1 className="font-bold text-lg my-6">
-                    Events/Training Records
-                  </h1>
-                  <EventsList
-                    data={data?.events}
+                  <h1 className="font-bold text-lg my-6">Training List</h1>
+                  <TrainingsList
+                    data={data?.trainings}
                     deleteHandler={deleteEvent}
                     showUpdateEventFormHandler={showUpdateEventFormHandler}
                     deleteLoading={deleting}

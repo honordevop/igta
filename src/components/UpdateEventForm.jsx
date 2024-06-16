@@ -89,11 +89,11 @@ const UpdateEventForm = ({ id, hideUpdateEventForm, mutate }) => {
     setFile(item);
   };
 
-  const handleChange = (e) => {
-    setInputs((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
+  // const handleChange = (e) => {
+  //   setInputs((prev) => {
+  //     return { ...prev, [e.target.name]: e.target.value };
+  //   });
+  // };
 
   const upload = async () => {
     if (file === undefined) {
