@@ -1,15 +1,50 @@
-"use client";
+// "use client";
 import { trainingModule } from "@/Utils/store";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
-const TrainingModules = () => {
-  const [slide, setSlide] = useState("");
-  const next = () => {
-    setSlide("400px");
+const TrainingModules = async () => {
+  // const [slide, setSlide] = useState("");
+  // const next = () => {
+  //   setSlide("400px");
+  // };
+
+  const fetchEventData = async () => {
+    // console.log(baseUrl);
+    // setLoading(true);
+    try {
+      const response = await fetch(
+        "https://igtainternational.org/api/training",
+        {
+          headers: {
+            "Cache-Control": "max-age=300", // Cache for 5 minutes (300 seconds)
+          },
+        }
+      );
+
+      const res = await response.json();
+
+      // const data = res.trainings;
+      // setTrainingList(res.event);
+      // console.log(res.trainings);
+      // setTimeout(() => {
+      //   setLoading(false);
+      // }, 2000);
+      // console.log(res.trainings);
+      return res.trainings;
+    } catch (error) {
+      // setError(error?.response);
+      // setLoading(false);
+      // toast(error?.message);
+
+      console.log(error);
+    }
   };
+
+  const data = await fetchEventData();
+
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <h3 className="font-black text-xl primaryBgColor px-4 py-2 rounded-xl">
@@ -18,9 +53,9 @@ const TrainingModules = () => {
 
       <div
         className="w-full flex flex-col md:flex-row gap-5 mt-10 items-center justify-center"
-        style={{ transform: `translateY(${slide}` }}
+        style={{}}
       >
-        {trainingModule.slice(0, 4).map((item, i) => (
+        {data?.slice(0, 4).map((item, i) => (
           <div
             key={i}
             className="w-[350px] flex flex-col gap-5 rounded-md border-2 border-double text-blue-700 primaryColor h-max p-2 glassMorphism"

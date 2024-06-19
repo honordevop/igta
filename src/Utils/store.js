@@ -280,7 +280,7 @@ export const teamsData = [
     img: "/adelina.jpeg",
   },
   {
-    name: "Ndeh Forsab, Germany",
+    name: "Ghislain Nde Fosah, Germany",
     desc: "IGTA Ambassador for Europe",
     img: "/forsab.jpg",
   },

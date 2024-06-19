@@ -382,7 +382,7 @@ const CreateTrainingForm = ({ hideForm, mutate }) => {
                 )}
               </div>
 
-              <div className="flex flex-col my-4">
+              {/* <div className="flex flex-col my-4">
                 <label htmlFor="" className="font-semibold">
                   Mode
                 </label>
@@ -399,7 +399,7 @@ const CreateTrainingForm = ({ hideForm, mutate }) => {
                 {modeHasError && (
                   <p className="text-red-500">Enter a valid Input</p>
                 )}
-              </div>
+              </div> */}
 
               <div className="w-full my-4 flex items-center justify-end space-x-4">
                 {!loading && (

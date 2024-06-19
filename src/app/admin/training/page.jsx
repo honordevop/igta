@@ -46,7 +46,8 @@ const Trainings = () => {
   const { data: userData, fetchData, error: err } = useRData();
 
   const [addPadding, setAddPadding] = useState("0");
-  const [leftWidth, setLefttWidth] = useState("25");
+  const [leftWidth, setLefttWidth] = useState("20");
+  const [rightWidth, setRightWidth] = useState("80");
   const [changeWidth, setChangeWidth] = useState(false);
   const [eventList, setEvent] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -157,10 +158,12 @@ const Trainings = () => {
     localStorage.setItem("changeWidth", changeWidth);
     if (changeWidth) {
       setLefttWidth("5");
+      setRightWidth("95");
       setAddPadding("10");
     }
     if (!changeWidth) {
       setLefttWidth("20");
+      setRightWidth("80");
       setAddPadding("0");
     }
   };
@@ -184,24 +187,24 @@ const Trainings = () => {
         {/* Left Side */}
         <div
           className={`h-full transitionWidth hideDivMax1024  primaryBgColor`}
-          style={{ width: `${leftWidth}rem` }}
+          style={{ width: `${leftWidth}%` }}
         >
           <Tabs currentPage={currentPage} tabLink={adminTabsLink} />
         </div>
 
         {/* Right Side */}
-        <div className={` w-full h-full`}>
+        <div className={` w-[${rightWidth}%] h-full`}>
           {/* Wrapper */}
           <div className="w-full h-full">
             <div className="h-max py-4 px-8 bg-[#f3f4f6] flex items-center justify-between relative ">
               <p
-                className=" text-xl font-bold "
+                className="text-base md:text-xl font-bold "
                 style={{ paddingLeft: `${addPadding}px` }}
               >
                 Welcome!
               </p>
 
-              <div className="font-medium">
+              <div className="font-medium mr-10">
                 <p>{userData?.user?.fullname}</p>
                 <p>{userData?.user?.email}</p>
               </div>
