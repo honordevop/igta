@@ -13,12 +13,13 @@ const Results = () => {
 
         <div className="container my-20 text-center flex flex-col gap-4 items-center justify-center">
           <h3 className="text-4xl font-bold ">
-            SUCCESSFUL CANDIDATES IN IGTA LOGISTICS AND PROCUREMENT EXAMS OF MAY
-            2024.
+            SUCCESSFUL CANDIDATES IN IGTA PEACE BUILDING AND CONFLICT MANAGEMENT
+            EXAMS OF MAY 2024.
           </h3>
           <p className="text-xl">
-            123 Students Succeeded with a Minimum score of 50% Out of 200
-            Students Who took the Examination. <br />
+            518 Students Registered For the Training, 113 Participated In the
+            Exams/Presentations. 41 Students Succeeded with a Minimum Score of
+            50%. <br />
             Congratulations !!!
           </p>
         </div>

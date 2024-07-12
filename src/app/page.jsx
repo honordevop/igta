@@ -20,9 +20,9 @@ export default function Home() {
         </div>
         <div className="container bg-red-100 py-6 mt-16">
           <p className=" text-xl text-center font-bold ">
-            The result of successful candidates that took the 2024 IGTA
-            Logistics and Procurements Training and examination has been
-            released.
+            The result of successful candidates that took the July 2024 IGTA
+            Peace Building And Conflict Management Training and examination has
+            been released.
           </p>
           <Link
             href="/result"
