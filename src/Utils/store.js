@@ -385,7 +385,7 @@ export const teamsData = [
     img: "/godwin.jpeg",
   },
   {
-    name: "Odeh Emmanuel Udama",
+    name: "Dr. Odeh Emmanuel Udama",
     desc: "IGTA Facilitator - Uyo",
     img: "/udama.jpeg",
   },
