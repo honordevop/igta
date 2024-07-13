@@ -445,7 +445,7 @@ export const teamsData = [
     img: "/justice.jpg",
   },
   {
-    name: "H.E. Amb. Sabina Nanyonge Ngando",
+    name: "Amb. Sabina Nanyonge Ngando",
     desc: "Administrator, Director IGTA",
     img: "/sabina.jpg",
   },

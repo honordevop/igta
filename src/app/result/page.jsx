@@ -14,7 +14,7 @@ const Results = () => {
         <div className="container my-20 text-center flex flex-col gap-4 items-center justify-center">
           <h3 className="text-4xl font-bold ">
             SUCCESSFUL CANDIDATES IN IGTA PEACE BUILDING AND CONFLICT MANAGEMENT
-            EXAMS OF MAY 2024.
+            EXAMS OF JULY 2024.
           </h3>
           <p className="text-xl">
             518 Students Registered For the Training, 113 Participated In the
