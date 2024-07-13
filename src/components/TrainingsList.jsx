@@ -13,7 +13,7 @@ const TrainingsList = ({
   // console.log(data);
   return (
     <div className="w-full overflow-x-scroll">
-      <table className=" text-nowrap md:mr-10a">
+      <table className=" text-nowrap">
         <thead>
           <tr className="border">
             <th className=" w-max px-2 py-2 cursor-pointer flex items-center justify-between">

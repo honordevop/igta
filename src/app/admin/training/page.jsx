@@ -193,7 +193,7 @@ const Trainings = () => {
         </div>
 
         {/* Right Side */}
-        <div className={` w-[${rightWidth}%] h-full`}>
+        <div className={` w-full h-full`}>
           {/* Wrapper */}
           <div className="w-full h-full">
             <div className="h-max py-4 px-8 bg-[#f3f4f6] flex items-center justify-between relative ">
