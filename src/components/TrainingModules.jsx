@@ -19,7 +19,7 @@ const TrainingModules = async () => {
         "https://igtainternational.org/api/training",
         {
           headers: {
-            "Cache-Control": "max-age=300", // Cache for 5 minutes (300 seconds)
+            "Cache-Control": "max-age=200", // Cache for 5 minutes (300 seconds)
           },
         }
       );
