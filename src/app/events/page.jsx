@@ -5,6 +5,8 @@ import PageHeader from "@/components/PageHeader";
 import React from "react";
 
 const Events = () => {
+
+
   return (
     <>
       <Navbar />
