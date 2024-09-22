@@ -19,16 +19,11 @@ export const navLinks = [
   },
   {
     id: "2",
-    title: "OUR TEAM",
-    url: "/teams",
-  },
-  {
-    id: "3",
     title: "TRAINING",
     url: "/trainings",
   },
   {
-    id: "4",
+    id: "3",
     title: "SERVICES",
     url: "/services",
   },
@@ -38,9 +33,14 @@ export const navLinks = [
   //   url: "/resources",
   // },
   {
-    id: "5",
+    id: "4",
     title: "EVENTS",
     url: "/events",
+  },
+  {
+    id: "5",
+    title: "OUR TEAM",
+    url: "/teams",
   },
   // {
   //   id: "5",
