@@ -13,7 +13,7 @@ const Tabs = ({ currentPage, tabLink }) => {
 
   return (
     <div className="w-full h-full secondaryBgColor hideScrollBar">
-      <ul className="flex flex-col gap-5 pt-[6rem]">
+      <ul className="flex flex-col gap-2 pt-[6rem]">
         {tabLink.map((link, i) => (
           <Link
             href={link.link}
@@ -25,7 +25,7 @@ const Tabs = ({ currentPage, tabLink }) => {
                 ? { backgroundColor: "#8a2928" }
                 : { backgroundColor: "transparent" }
             }
-            className="pl-6 pr-2 py-4"
+            className="pl-6 pr-2 py-2"
           >
             <div className="flex gap-5 items-center">
               <div className=" text-lg p-2 border border-white rounded-md text-white">

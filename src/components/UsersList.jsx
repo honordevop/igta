@@ -4,7 +4,7 @@ import React from "react";
 const UsersList = ({ data }) => {
   return (
     <div className="w-full overflow-x-scroll">
-      <table className=" text-nowrap ">
+      <table className="">
         <thead>
           <tr className="border">
             <th className=" w-max px-2 py-2 cursor-pointer flex items-center justify-between">

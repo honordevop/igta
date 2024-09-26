@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import Events from "@/models/Events";
 import connect from "@/Utils/db";
+import Notes from "@/models/Notes";
 
 export const GET = async (request) => {
   // const url = new URL(request.url);
@@ -11,8 +11,8 @@ export const GET = async (request) => {
   try {
     await connect();
 
-    const events = await Events.find();
-    return NextResponse.json({ events }, { status: 200 });
+    const notes = await Notes.find();
+    return NextResponse.json({ notes }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: "Database Error" }, { status: 500 });
   }
@@ -26,12 +26,12 @@ export const POST = async (request) => {
   //fetch
   try {
     await connect();
-    const newEvent = new Events(body);
+    const newNote = new Notes(body);
 
-    await newEvent.save();
+    await newNote.save();
 
     return NextResponse.json(
-      { message: "Event has been created" },
+      { message: "Note has been created" },
       { status: 201 }
     );
   } catch (error) {

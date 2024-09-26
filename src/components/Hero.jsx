@@ -14,13 +14,13 @@ const Hero = () => {
         <h1 className="text-[40px] text-center md:text-left md:text-[55px] font-bold leading-[50px]  md:leading-[80px] font-sans">
           Insight Global Training Academy
         </h1>
-        <div className="">
-          {/* {heroFeatures.map((item, i) => (
+        <div className="flex flex-col gap-2">
+          {heroFeatures.map((item, i) => (
             <div key={i} className="flex gap-4 items-center">
               <IoMdCheckmarkCircleOutline className="primaryColor" />
-              <p className="text-gray-500">{item.title}</p>
+              <p className="text-gray-500 text-[14px] md:text-base">{item.title}</p>
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
       <div className="flex-1 ">

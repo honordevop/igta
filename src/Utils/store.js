@@ -5,6 +5,7 @@ import { GiWorld } from "react-icons/gi";
 import { MdDashboard, MdOutlineLocalPostOffice } from "react-icons/md";
 import { FaArrowsTurnToDots } from "react-icons/fa6";
 import { FaCalendarDay, FaRegIdBadge } from "react-icons/fa";
+import { LuBookOpenCheck } from "react-icons/lu";
 import { TfiWrite } from "react-icons/tfi";
 import { CgProfile } from "react-icons/cg";
 import { RiBuilding2Line } from "react-icons/ri";
@@ -39,6 +40,11 @@ export const navLinks = [
   },
   {
     id: "5",
+    title: "NOTES",
+    url: "/notes",
+  },
+  {
+    id: "6",
     title: "OUR TEAM",
     url: "/teams",
   },
@@ -51,16 +57,16 @@ export const navLinks = [
 
 export const heroFeatures = [
   {
-    title: "Global Certification Limited",
+    title: "Providing Accessible Education For All",
   },
   {
-    title: "America Council for Training",
+    title: "Identifying and Solving The World’s Problems",
   },
   {
-    title: "African Training Intitute",
+    title: "Support Individuals Attain Their Full Potentials",
   },
   {
-    title: "Independent European Certification (IEC)",
+    title: "Fostering Innovation & Creativity",
   },
 ];
 
@@ -257,8 +263,14 @@ export const adminTabsLink = [
   {
     title: "Trainings",
     icon: <TfiWrite />,
-    link: "/admin/training",
-    slug: "complaints",
+    link: "/admin/trainings",
+    slug: "trainings",
+  },
+  {
+    title: "Notes",
+    icon: <LuBookOpenCheck />,
+    link: "/admin/notes",
+    slug: "notes",
   },
   {
     title: "Profile",
