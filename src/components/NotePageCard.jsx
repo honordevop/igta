@@ -12,28 +12,28 @@ const NotePageCard = ({data}) => {
             className="flex trainingModal flex-col md:flex-row items-center justify-center gap-5 w-full h-max relative bg-[#eeeff30] border-[#e2e8f0] rounded-[16px]  shadow-md p-5"
             key={i}
           >
-            <div className="flex-1 h-[400px] w-full relative md:h-[50vh]">
+            {data?.image && <div className="flex-1 h-[400px] w-full relative md:h-[50vh]">
               <Image
-                src={note.image}
-                alt={`${note.title} note image`}
+                src={note?.image}
+                alt={`${note?.title} note image`}
                 fill={true}
                 priority
                 className="object-cover imgControlMobile"
               />
-            </div>
+            </div>}
 
             <div className="flex-1 px-6 h-full flex flex-col gap-5">
-              <p className="text-2xl  font-semibold">Title {note.title}</p>
+              <p className="text-2xl  font-semibold">Title {note?.title}</p>
               <p className="text-gray-500 text-lg font-semibold">
                 {" "}
-                Course: {note.course}
+                Course: {note?.course}
               </p>
               <p className=" text-lg">
-                {note.content.slice(0, 240)}...
+                {note?.content.slice(0, 240)}...
               </p>
 
               <button className="w-max flex ">
-                {note.show ? 
+                {note?.show ? 
                   <Link
                     href={`/notes/${note._id}`}
                     className="w-full font-black text-lg primaryBgColor px-6 py-2 rounded-lg text-white"
