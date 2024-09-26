@@ -12,7 +12,7 @@ const NotePageCard = ({data}) => {
             className="flex trainingModal flex-col md:flex-row items-center justify-center gap-5 w-full h-max relative bg-[#eeeff30] border-[#e2e8f0] rounded-[16px]  shadow-md p-5"
             key={i}
           >
-            {data?.image && <div className="flex-1 h-[400px] w-full relative md:h-[50vh]">
+            {note?.image && <div className="flex-1 h-[400px] w-full relative md:h-[50vh]">
               <Image
                 src={note?.image}
                 alt={`${note?.title} note image`}

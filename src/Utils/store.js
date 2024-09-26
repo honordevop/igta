@@ -222,6 +222,12 @@ export const userTabsLink = [
     slug: "profile",
   },
   {
+    title: "Notes",
+    icon: <LuBookOpenCheck />,
+    link: "/notes",
+    slug: "notes",
+  },
+  {
     title: "Events",
     icon: <FaCalendarDay />,
     link: "/viewevents",
