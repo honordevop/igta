@@ -53,7 +53,7 @@ const Notes = async () => {
   const fetchEventData = async () => {
     // setLoading(true); // Uncomment if you want to set loading state
     try {
-      const response = await fetch(`https://igtainternational.org/api/note?_=${new Date().getTime()}`, {
+      const response = await fetchWithCacheBust(`https://igtainternational.org/api/note`, {
         headers: {
           "Cache-Control": "no-cache", 
           "Pragma": "no-cache",
