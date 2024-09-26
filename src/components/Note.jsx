@@ -14,7 +14,7 @@ const Note = ({ data }) => {
         {status === "authenticated" ? (
           <div className="w-full flex flex-col gap-5">
             <div className="w-full my-10 text-center flex flex-col gap-4 items-center justify-center">
-              <h3 className="text-4xl font-bold">{data?.course} Course..</h3>
+              <h3 className="text-4xl font-bold">{`${data?.course} Course`} </h3>
             </div>
             <h1 className="font-semibold text-2xl"> Title: {data?.title}</h1>
 
