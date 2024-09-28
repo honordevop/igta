@@ -309,7 +309,7 @@ const CreateNoteFormm = ({ hideForm, mutate }) => {
                   required
                   name="title"
                   className="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900"
-                  placeholder="Training Title"
+                  placeholder="Title"
                   onChange={handleChange}
                   //   value={title}
                   //   onBlur={titleBlurHandler}
