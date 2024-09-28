@@ -18,7 +18,7 @@ const Editor = ({ value, onChange }) => {
       value={value}
       onChange={onChange}
       theme="snow" // You can choose a different theme if you prefer
-      style={editorStyle} // Apply the style here
+    //   style={editorStyle} // Apply the style here
     />
   );
 };
