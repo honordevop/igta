@@ -40,7 +40,7 @@ export const navLinks = [
   },
   {
     id: "5",
-    title: "NOTES",
+    title: "CLASSROOM",
     url: "/notes",
   },
   {
@@ -222,7 +222,7 @@ export const userTabsLink = [
     slug: "profile",
   },
   {
-    title: "Notes",
+    title: "Classroom",
     icon: <LuBookOpenCheck />,
     link: "/notes",
     slug: "notes",
@@ -273,7 +273,7 @@ export const adminTabsLink = [
     slug: "trainings",
   },
   {
-    title: "Notes",
+    title: "Classroom",
     icon: <LuBookOpenCheck />,
     link: "/admin/notes",
     slug: "notes",

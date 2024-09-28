@@ -34,7 +34,7 @@ const Notes = async ({ params }) => {
         `https://igtainternational.org/api/note/${id}`,
         {
           headers: {
-            "Cache-Control": "no-cache",
+            "Cache-Control": "public, max-age=0, must-revalidate",
             Pragma: "no-cache",
             Expires: "0",
           },
@@ -59,9 +59,6 @@ const Notes = async ({ params }) => {
     }
   };
 
-  // useEffect(() => {
-  //   fetchEventData();
-  // }, [id]);
 
   const data = await fetchEventData();
 
@@ -92,7 +89,7 @@ const Notes = async ({ params }) => {
       <>
         {!loading ? (
           <div className="w-full flex flex-col items-center justify-center">
-            <PageHeader title="Notes" />
+            <PageHeader title="Classroom" />
             <div className="container">
               <Note data={data} />
             </div>
