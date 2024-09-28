@@ -23,7 +23,7 @@ const NotePageCard = ({data}) => {
             </div>}
 
             <div className="flex-1 px-6 h-full flex flex-col gap-5">
-              <p className="text-2xl  font-semibold">Title {note?.title}</p>
+              <p className="text-2xl  font-semibold">Title: {note?.title}</p>
               <p className="text-gray-500 text-lg font-semibold">
                 {" "}
                 Course: {note?.course}
