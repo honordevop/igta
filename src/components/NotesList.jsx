@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import React, { useState } from "react";
+import DOMPurify from 'dompurify';
 import { CiEdit } from "react-icons/ci";
 import { BeatLoader } from "react-spinners";
 import { MdDeleteForever } from "react-icons/md";
@@ -14,6 +16,24 @@ const NotesList = ({
   deleteLoading,
   displayLoading,
 }) => {
+
+
+  const truncateHTML = (html, maxLength) => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+  
+    let text = tempDiv.innerText;
+  
+    // If the text exceeds the maxLength, truncate it
+    if (text.length > maxLength) {
+      text = text.slice(0, maxLength) + '...';
+    }
+  
+    // Return the truncated HTML content
+    const truncatedHtml = tempDiv.innerHTML.substring(0, maxLength);
+    return truncatedHtml + (text.length > maxLength ? '...' : '');
+  };
+
   // console.log(data);
   return (
     <div className="w-full overflow-x-scroll">
@@ -29,14 +49,17 @@ const NotesList = ({
           </tr>
         </thead>
         <tbody>
-          {data?.map((item, index) => (
+          {data?.map((item, index) => { 
+            const sanitizedContent = DOMPurify.sanitize(item?.content);
+          const previewContent = truncateHTML(sanitizedContent, 50);
+
+            return (
             <tr key={index} className="cursor-pointer text-sm md:text-base">
               <td className="border px-2 py-2 w-max ">{index}</td>
               <td className="border px-2 py-2 w-max ">{item?.title}</td>
               <td className="border px-2 py-2 w-max ">{item?.course}</td>
-              <td className="border px-2 py-2 w-max overflow-hidden">
-                {item?.content.slice(0, 40)}
-              </td>
+              <td className="border px-2 py-2 w-max overflow-hidden" dangerouslySetInnerHTML={{ __html: previewContent }}/>
+              {/* <div className="text-lg" dangerouslySetInnerHTML={{ __html: previewContent }} /> */}
               {/* <td className="border px-2 py-2 w-max ">{item?.facilitator}</td>
               <td className="border px-2 py-2 w-max ">{item?.mode}</td> */}
               <td className="border px-2 py-2 w-max flex gap-1">
@@ -74,7 +97,7 @@ const NotesList = ({
                 </div>
               </td>
             </tr>
-          ))}
+          )})}
         </tbody>
       </table>
     </div>

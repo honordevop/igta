@@ -67,7 +67,7 @@ const Notes = async () => {
   
       const res = await response.json();
       // Return the notes data
-      console.log(res.notes)
+      // console.log(res.notes)
       return res.notes;
     } catch (error) {
       // Handle the error

@@ -22,6 +22,8 @@ import TrainingsList from "@/components/TrainingsList";
 import NotesList from "@/components/NotesList";
 import CreateNoteForm from "@/components/CreateNoteForm";
 import UpdateNoteForm from "@/components/UpdateNoteForm";
+import CreateNoteFormm from "@/components/CreateNoteFormm";
+import UpdateNoteFormm from "@/components/UpdateNoteFormm";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -301,14 +303,14 @@ const Notes = () => {
           </div>
 
           {showEventForm && !showUpdateEventForm && (
-            <CreateNoteForm
+            <CreateNoteFormm
               hideForm={hideEventsFormHandler}
               mutate={mutate}
             />
           )}
 
           {showUpdateEventForm && !showEventForm && (
-            <UpdateNoteForm
+            <UpdateNoteFormm
               id={id}
               data={eventList}
               hideUpdateEventForm={hideUpdateEventForm}

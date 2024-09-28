@@ -1,12 +1,15 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import DOMPurify from 'dompurify';
 import Link from "next/link";
 import React from "react";
 
 const Note = ({ data }) => {
   const { data: session, status } = useSession();
   // const [loading, setLoading] = useState(true);
+
+  const cleanContent = DOMPurify.sanitize(data?.content);
 
   return (
     <>
@@ -30,7 +33,9 @@ const Note = ({ data }) => {
             )}
 
             <div className="mt-5">
-              <p className="md:text-[18px]"> {data?.content} </p>
+              {/* <p className="md:text-[18px]"> {data?.content} </p> */}
+
+              <div className="leading-8 text-[18px]" dangerouslySetInnerHTML={{ __html: cleanContent }} />
             </div>
           </div>
         ) : (

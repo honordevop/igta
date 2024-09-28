@@ -3,6 +3,8 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Syne+Tactile&display=swap");
 
+@import 'react-quill/dist/quill.snow.css'; /* Import Quill styles */
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -126,4 +128,23 @@ body {
 
 .transitionWidth {
   transition: width 1s ease;
+}
+
+
+/* React Quill Editor */
+
+/* styles.css */
+.ql-container {
+  height: 300px; /* Set your desired height */
+  overflow-y: auto; /* Ensure vertical scrolling */
+}
+
+/* Optional: Hide the scrollbar */
+.ql-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.ql-container {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
 }
