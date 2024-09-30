@@ -18,6 +18,11 @@ const NotePageCard = ({ data }) => {
   }, [data]);
 
   const truncateHTML = (html, maxLength) => {
+    
+    if (typeof window === 'undefined') {
+      return html; // or handle it some other way
+    }
+
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
 
