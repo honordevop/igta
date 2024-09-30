@@ -3,14 +3,18 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import DOMPurify from 'dompurify';
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Note = ({ data }) => {
   const { data: session, status } = useSession();
-  // const [loading, setLoading] = useState(true);
+  const [cleanContent, setCleanContent] = useState('');
 
-  // const cleanContent = DOMPurify.sanitize(data?.content);
-  const cleanContent = data?.content;
+  useEffect(() => {
+    if (typeof window !== 'undefined' && data?.content) {
+      const sanitizedContent = DOMPurify.sanitize(data.content);
+      setCleanContent(sanitizedContent);
+    }
+  }, [data]);
 
   return (
     <>
@@ -18,7 +22,7 @@ const Note = ({ data }) => {
         {status === "authenticated" ? (
           <div className="w-full flex flex-col gap-5">
             <div className="w-full my-10 text-center flex flex-col gap-4 items-center justify-center">
-              <h3 className="text-4xl font-bold">{`${data?.course} Course`} </h3>
+              <h3 className="text-4xl font-bold">{`${data?.course} Course`}</h3>
             </div>
             <h1 className="font-semibold text-2xl"> Title: {data?.title}</h1>
 
@@ -27,15 +31,13 @@ const Note = ({ data }) => {
                 <Image
                   src={data?.image}
                   className="object-contain"
-                  fill="true"
+                  fill={true}
                   alt={`${data?.title} image`}
                 />
               </div>
             )}
 
             <div className="mt-5">
-              {/* <p className="md:text-[18px]"> {data?.content} </p> */}
-
               <div className="leading-8 text-[18px]" dangerouslySetInnerHTML={{ __html: cleanContent }} />
             </div>
           </div>

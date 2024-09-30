@@ -50,8 +50,7 @@ const NotesList = ({
         </thead>
         <tbody>
           {data?.map((item, index) => { 
-            // const sanitizedContent = DOMPurify.sanitize(item?.content);
-            const sanitizedContent = item?.content;
+            const sanitizedContent = DOMPurify.sanitize(item?.content);
           const previewContent = truncateHTML(sanitizedContent, 50);
 
             return (
