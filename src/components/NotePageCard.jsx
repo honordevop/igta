@@ -27,7 +27,8 @@ const NotePageCard = ({data}) => {
     <div className="w-full mb-24 flex flex-col items-center justify-center">
       <div className="w-full flex flex-col gap-20">
         {data?.map((note, i) => {
-          const sanitizedContent = DOMPurify.sanitize(note?.content);
+          // const sanitizedContent = DOMPurify.sanitize(note?.content);
+          const sanitizedContent = note?.content;
           const previewContent = truncateHTML(sanitizedContent, 200);
 
           return (

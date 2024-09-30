@@ -9,7 +9,8 @@ const Note = ({ data }) => {
   const { data: session, status } = useSession();
   // const [loading, setLoading] = useState(true);
 
-  const cleanContent = DOMPurify.sanitize(data?.content);
+  // const cleanContent = DOMPurify.sanitize(data?.content);
+  const cleanContent = data?.content;
 
   return (
     <>
