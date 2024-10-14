@@ -81,7 +81,9 @@ const Notes = async () => {
   };
 
   const data = await fetchEventData();
-  data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const sortedData = data?.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
   // console.log(data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
 
   return (
@@ -103,7 +105,7 @@ const Notes = async () => {
             </p>
           </div>
 
-          <NotePageCard data={data} />
+          <NotePageCard data={sortedData} />
         </div>
       </div>
       <Footer />

@@ -89,7 +89,9 @@ const Dashboard = () => {
   };
 
   const { data, mutate, error } = useSWR("/api/events", fetcher);
-  data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const sortedData = data?.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
 
   // console.log(eventList);
   const deleteEvent = async (id) => {
@@ -247,7 +249,7 @@ const Dashboard = () => {
                     Events/Training Records
                   </h1>
                   <EventsList
-                    data={data?.events}
+                    data={sortedData?.events}
                     deleteHandler={deleteEvent}
                     showUpdateEventFormHandler={showUpdateEventFormHandler}
                     deleteLoading={deleting}

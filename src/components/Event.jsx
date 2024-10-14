@@ -32,7 +32,11 @@ const Event = async () => {
   };
 
   const data = await fetchEventData();
-  data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  const sortedData = data?.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
   // console
   //   .log
   //   // data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -59,7 +63,7 @@ const Event = async () => {
           </div>
         </div> */}
 
-        {data?.map((item, i) => (
+        {sortedData?.map((item, i) => (
           <div
             className=" flex trainingModal flex-col md:flex-row  justify-center gap-5 w-full h-max relative bg-[#eeeff30] border-[#e2e8f0] rounded-[16px]  p-5"
             key={i}

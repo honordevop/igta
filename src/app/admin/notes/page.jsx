@@ -97,7 +97,9 @@ const Notes = () => {
   };
 
   const { data, mutate, error } = useSWR("/api/note", fetcher);
-  data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const sortedData = data?.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
 
   // console.log(eventList);
   const deleteEvent = async (id) => {
@@ -292,7 +294,7 @@ const Notes = () => {
                 <div>
                   <h1 className="font-bold text-lg my-6">Note List</h1>
                   <NotesList
-                    data={data?.notes}
+                    data={sortedData?.notes}
                     deleteHandler={deleteEvent}
                     showUpdateEventFormHandler={showUpdateEventFormHandler}
                     displayNoteHandler={displayNoteHandler}
