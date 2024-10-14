@@ -8,7 +8,6 @@ import { servicesData } from "@/Utils/store";
 import React from "react";
 
 const Notes = async () => {
-
   const fetchWithCacheBust = (url, options = {}) => {
     const cacheBustUrl = `${url}?_=${new Date().getTime()}`; // Add cache-busting query parameter
     return fetch(cacheBustUrl, {
@@ -53,18 +52,21 @@ const Notes = async () => {
   const fetchEventData = async () => {
     // setLoading(true); // Uncomment if you want to set loading state
     try {
-      const response = await fetchWithCacheBust(`https://igtainternational.org/api/note`, {
-        headers: {
-          "Cache-Control": "no-cache", 
-          "Pragma": "no-cache",
-          "Expires": "0",
-        },
-      });
-  
+      const response = await fetchWithCacheBust(
+        `https://igtainternational.org/api/note`,
+        {
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
+      );
+
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
-  
+
       const res = await response.json();
       // Return the notes data
       // console.log(res.notes)
@@ -77,9 +79,10 @@ const Notes = async () => {
       // setLoading(false); // Uncomment if you want to set loading state
     }
   };
-  
-  const data = await fetchEventData();
 
+  const data = await fetchEventData();
+  data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  // console.log(data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
 
   return (
     <>
@@ -89,14 +92,18 @@ const Notes = async () => {
         <div className="container">
           <div className="w-full my-20 text-center flex flex-col gap-4 items-center justify-center">
             <h3 className="text-4xl font-bold">
-              Independent and Undenied access to Training Notes and Course Materials
+              Independent and Undenied access to Training Notes and Course
+              Materials
             </h3>
             <p className="text-xl">
-            IGTA provide undenied access to training materials and study guides for all our courses and trainings. The goal is to ensure that student can consult this notes and materials for refrences and further studies.
+              IGTA provide undenied access to training materials and study
+              guides for all our courses and trainings. The goal is to ensure
+              that student can consult this notes and materials for refrences
+              and further studies.
             </p>
           </div>
 
-          <NotePageCard data = {data}/>
+          <NotePageCard data={data} />
         </div>
       </div>
       <Footer />

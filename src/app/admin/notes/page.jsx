@@ -97,6 +97,7 @@ const Notes = () => {
   };
 
   const { data, mutate, error } = useSWR("/api/note", fetcher);
+  data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   // console.log(eventList);
   const deleteEvent = async (id) => {
@@ -130,7 +131,9 @@ const Notes = () => {
 
   const displayNoteHandler = async (id, show) => {
     setDisplay(true);
-    const userConfirmed = confirm("Are you sure you want to change Note Display Status?");
+    const userConfirmed = confirm(
+      "Are you sure you want to change Note Display Status?"
+    );
 
     if (!userConfirmed) {
       setDisplay(false);
@@ -303,10 +306,7 @@ const Notes = () => {
           </div>
 
           {showEventForm && !showUpdateEventForm && (
-            <CreateNoteFormm
-              hideForm={hideEventsFormHandler}
-              mutate={mutate}
-            />
+            <CreateNoteFormm hideForm={hideEventsFormHandler} mutate={mutate} />
           )}
 
           {showUpdateEventForm && !showEventForm && (
