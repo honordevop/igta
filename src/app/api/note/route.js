@@ -14,6 +14,7 @@ export const GET = async (request) => {
     const notes = await Notes.find();
     return NextResponse.json({ notes }, { status: 200 });
   } catch (error) {
+    console.log(error)
     return NextResponse.json({ message: "Database Error" }, { status: 500 });
   }
 };

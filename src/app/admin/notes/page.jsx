@@ -97,7 +97,32 @@ const Notes = () => {
   };
 
   const { data, mutate, error } = useSWR("/api/note", fetcher);
-  const sortedData = data?.sort(
+
+  // Import Axios
+  // const axios = require("axios");
+
+  // Function to perform a GET request
+  // async function fetchDataa(url) {
+  //   console.log("Called");
+  //   try {
+  //     const response = await axios.get(url);
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // }
+
+  // // Example usage
+  // const url = "/api/note"; // Replace with your URL
+  // fetchDataa(url);
+
+  // console.log(data?.notes);
+
+  // const newData = fetch("/api/note");
+
+  // console.log(newData);
+
+  const sortedData = data?.notes?.sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
 
@@ -294,7 +319,7 @@ const Notes = () => {
                 <div>
                   <h1 className="font-bold text-lg my-6">Note List</h1>
                   <NotesList
-                    data={sortedData?.notes}
+                    data={sortedData}
                     deleteHandler={deleteEvent}
                     showUpdateEventFormHandler={showUpdateEventFormHandler}
                     displayNoteHandler={displayNoteHandler}
