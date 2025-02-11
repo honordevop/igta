@@ -13,7 +13,7 @@ const EventsList = ({
 }) => {
   // console.log(data);
   return (
-    <div className="w-full overflow-scroll">
+    <div className="w-full overflow-x-scroll">
       <table className="">
         <thead>
           <tr className="border">

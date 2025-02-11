@@ -18,7 +18,9 @@ const Hero = () => {
           {heroFeatures.map((item, i) => (
             <div key={i} className="flex gap-4 items-center">
               <IoMdCheckmarkCircleOutline className="primaryColor" />
-              <p className="text-gray-500 text-[14px] md:text-base">{item.title}</p>
+              <p className="text-gray-500 text-[14px] md:text-base">
+                {item.title}
+              </p>
             </div>
           ))}
         </div>
@@ -26,7 +28,7 @@ const Hero = () => {
       <div className="flex-1 ">
         <div className=" w-full h-[40vh] md:h-full mt-[20px] ">
           <Image
-            src="/learning-bro.svg"
+            src="/learning-bros.png"
             alt="hero image"
             priority
             fill
