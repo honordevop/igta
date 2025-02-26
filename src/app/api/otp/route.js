@@ -7,7 +7,6 @@ import nodemailer from "nodemailer";
 export const POST = async (request) => {
   const requestData = await request.json();
   const { email } = requestData;
-  // console.log(email);
   const otpGenerate = () => {
     const min = 100000;
     const max = 999999;
@@ -15,6 +14,8 @@ export const POST = async (request) => {
   };
 
   const otp = otpGenerate();
+  console.log(`${email} - ${otp}`);
+
   //fetch
   const newOtp = new Otps({ email, otp });
   try {
@@ -38,7 +39,7 @@ export const POST = async (request) => {
     // Update or save new OTP
     if (otpExist) {
       await Otps.findOneAndUpdate({ email: email }, { otp: otp });
-      // console.log("Updated existing OTP");
+      console.log("Updated existing OTP");
     } else {
       const newOtp = new Otps({ email, otp });
       await newOtp.save();
@@ -46,7 +47,7 @@ export const POST = async (request) => {
     }
 
     const transporter = nodemailer.createTransport({
-      host: "zoho",
+      host: "smtp.zoho.com",
       port: 465,
       secure: true,
       auth: {
@@ -55,6 +56,7 @@ export const POST = async (request) => {
       },
     });
 
+
     const mailOption = {
       from: "admin@igtainternational.org",
       to: `${email}`,
@@ -62,16 +64,24 @@ export const POST = async (request) => {
       html: `
         <h3>Hello!!!</h3>
         <h4> Use this OTP code to complete your password recovery process - OTP Code: ${otp}</h4> 
+
+        <h4>For further Enquiry, Please feel free to mail info@igtainternational.org </h4>
+
+        <em style="font-weight: bold;"> This is a system generated email, Do not reply!!!</em>
         `,
     };
 
-    await transporter.sendMail(mailOption);
+
+    const result = await transporter.sendMail(mailOption);
+
+    // console.log("Email Sent: ", result);
 
     return NextResponse.json({ message: "OTP Code Sent" }, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { message: "Something went wrong" },
-      { status: 500 }
-    );
-  }
+  console.error("Error sending OTP email:", error);
+  return NextResponse.json(
+    { message: "Something went wrong", error: error.message },
+    { status: 500 }
+  );
+}
 };

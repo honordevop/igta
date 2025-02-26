@@ -458,6 +458,36 @@ export const teamsData = [
     img: "/jullian.jpg",
   },
   {
+    name: "Jackson Alozie Onyeso",
+    desc: "IGTA FACILITATOR Rivers State",
+    img: "/jackson.jpeg",
+  },
+  {
+    name: "Eghomien Emmanuella",
+    desc: "IGTA FACILITATOR Agbor",
+    img: "/eghomien.jpeg",
+  },
+  {
+    name: "Mobolaji Asisat Shobowale",
+    desc: "IGTA FACILITATOR Ogun State",
+    img: "/mobolaji.jpeg",
+  },
+  {
+    name: "Charity Akpovemu",
+    desc: "IGTA FACILITATOR Delta State",
+    img: "/charity.jpeg",
+  },
+  {
+    name: "Jimoh Murtala",
+    desc: "IGTA FACILITATOR Benue State",
+    img: "/jimoh.jpeg",
+  },
+  {
+    name: "Simbiat Folashade Aiki",
+    desc: "IGTA FACILITATOR Osogbo, Osun State",
+    img: "/simbiat.jpeg",
+  },
+  {
     name: "Bertrand Awa - UAE",
     desc: "IGTA Ambassador Northeast Asia",
     img: "/bertrand.jpg",
