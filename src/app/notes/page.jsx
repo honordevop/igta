@@ -98,7 +98,7 @@ const Notes = async () => {
               Materials
             </h3>
             <p className="text-xl">
-              IGTA provide undenied access to training materials and study
+              IGTA provides undenied access to training materials and study
               guides for all our courses and trainings. The goal is to ensure
               that student can consult this notes and materials for refrences
               and further studies.

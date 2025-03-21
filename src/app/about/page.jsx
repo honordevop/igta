@@ -40,7 +40,7 @@ const About = () => {
               <p className="text-lg text-center">
                 We are delivering impactful and cutting edge training and
                 capacity development education that enables individuals and
-                organizations to unlock their potential.
+                organizations to unlock their full potential.
               </p>
             </div>
           </div>
