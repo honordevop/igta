@@ -12,7 +12,14 @@ export const GET = async (request) => {
     await connect();
 
     const notes = await Notes.find();
-    return NextResponse.json({ notes }, { status: 200 });
+    return NextResponse.json({ notes }, {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0",
+      } });
   } catch (error) {
     console.log(error)
     return NextResponse.json({ message: "Database Error" }, { status: 500 });
