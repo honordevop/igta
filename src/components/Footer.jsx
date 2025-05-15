@@ -112,7 +112,7 @@ const Footer = () => {
 
         <div className="border-t border-blue-400 w-full flex items-center justify-center">
           <p className="py-3 text-center">
-            Copyright © 2024 - Insight Global Training Academy (IGTA)
+            Copyright © 2025 - Insight Global Training Academy (IGTA)
           </p>
         </div>
       </div>
