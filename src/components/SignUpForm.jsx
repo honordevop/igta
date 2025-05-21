@@ -160,7 +160,7 @@ const SignUpForm = ({ handleHideSignUpForm }) => {
         },
         body: JSON.stringify({
           fullname: fullName,
-          email,
+          email: email.toLowerCase(),
           mobilenumber: `${countryCode}${mobileNumber}`,
           country,
           gender,
