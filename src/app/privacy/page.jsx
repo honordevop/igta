@@ -26,12 +26,12 @@ const Privacy = () => {
               applications we own, operate, or control (the “Website(s)”).{" "}
               <br /> This Privacy Policy applies only to the Services and
               Trainings, and we are not responsible for the practices of
-              persons, companies, institutions or websites that Udacity does not
+              persons, companies, institutions or websites that IGTA does not
               control, manage, or employ. Capitalized terms not defined herein
               have the meanings set forth in the TOU. Please read this Privacy
               Policy as well as our TOU carefully, as they govern your use of
-              Udacity. <br /> If you do not agree to this Privacy Policy, please
-              do not use our Services. <br />
+              IGTA. <br /> If you do not agree to this Privacy Policy, please do
+              not use our Services. <br />
               Insight Global Training Academy is the data controller of your
               information. Please see the “Contact Information” section below
               for additional details. Please note that if you obtain access

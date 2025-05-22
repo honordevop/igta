@@ -191,7 +191,7 @@ export const aboutData = [
   },
   {
     title: "Driving outcomes that",
-    desc: "IGTA’s proven playbook is globally scalable, addressing the widespread proffessional talent shortages that impact growth, productivity, and innovation. We collaborate with enterprises and highly motivated individuals to design a tailored skills transformation journey. Our exclusive content is co-created and continually refined with proffesionals and industry leaders. Each Udacity program is deeply focused—eliminating guesswork in selecting the right course. Projects and learners assesment go far beyond step-by-step guides, cultivating the critical thinking required for workplace relevance. Expert mentors unblock learning with personalized support, and verify complete mastery of competencies.",
+    desc: "IGTA’s proven playbook is globally scalable, addressing the widespread proffessional talent shortages that impact growth, productivity, and innovation. We collaborate with enterprises and highly motivated individuals to design a tailored skills transformation journey. Our exclusive content is co-created and continually refined with proffesionals and industry leaders. Each IGTA program is deeply focused—eliminating guesswork in selecting the right course. Projects and learners assesment go far beyond step-by-step guides, cultivating the critical thinking required for workplace relevance. Expert mentors unblock learning with personalized support, and verify complete mastery of competencies.",
     sub: "empower learners, organizations and nations",
     image: "/about2.jpg",
   },

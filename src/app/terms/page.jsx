@@ -81,7 +81,7 @@ const Terms = () => {
               you. You agree that IGTA shall not be liable to you or to any
               third party for any modifications, suspensions, or discontinuance
               of the Services, or any portion thereof. Nothing in this Terms of
-              Use shall be construed to obligate Udacity to maintain and support
+              Use shall be construed to obligate IGTA to maintain and support
               the Services or any part or portion thereof, during the term of
               this Terms of Use.
             </p>
