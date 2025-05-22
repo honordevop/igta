@@ -68,7 +68,7 @@ const Footer = () => {
                 <p className="text-xl mb-1 font-semibold">Resources</p>
                 <ul className="flex flex-col gap-2 mt-4">
                   <Link href="/terms">Terms</Link>
-                  <Link href="/privacy">Privacy </Link>
+                  <Link href="/privacy">Privacy Policy</Link>
                 </ul>
               </div>
 
