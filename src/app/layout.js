@@ -35,12 +35,12 @@ export default function RootLayout({ children }) {
         />
 
         {/* ✅ Google AdSense Verification Script */}
-        <Script
+        {/* <Script
           id="adsense"
           strategy="beforeInteractive"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672443632225136"
           crossOrigin="anonymous"
-        />
+        /> */}
 
         {/* ✅ Google Analytics */}
         <Script
