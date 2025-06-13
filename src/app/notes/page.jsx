@@ -18,7 +18,7 @@ const Notes = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const limit = 20;
+  const limit = 10;
 
   const fetchEventData = async (page) => {
     setLoading(true);
