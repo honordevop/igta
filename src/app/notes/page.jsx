@@ -5,16 +5,13 @@ import Navbar from "@/components/Navbar";
 import NotePageCard from "@/components/NotePageCard";
 import PageHeader from "@/components/PageHeader";
 import React, { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Notes = () => {
-  const searchParams = useSearchParams();
   const router = useRouter();
 
-  const initialPage = parseInt(searchParams.get("page") || "1");
-
   const [notes, setNotes] = useState([]);
-  const [currentPage, setCurrentPage] = useState(initialPage);
+  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
 
@@ -32,6 +29,7 @@ const Notes = () => {
       const data = await response.json();
       setNotes(data.notes || []);
       setTotalPages(data.totalPages || 1);
+      setCurrentPage(data.currentPage || 1);
     } catch (error) {
       console.error("Failed to fetch notes:", error);
     } finally {
@@ -39,24 +37,26 @@ const Notes = () => {
     }
   };
 
+  // Use native window.location to get query params
   useEffect(() => {
-    fetchEventData(currentPage);
-  }, [currentPage]);
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const page = parseInt(params.get("page") || "1", 10);
+      setCurrentPage(page);
+      fetchEventData(page);
+    }
+  }, []);
 
-  // Update the URL query param when currentPage changes
+  // Update URL when page changes
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    params.set("page", currentPage.toString());
-    router.push(`?${params.toString()}`);
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      params.set("page", currentPage);
+      const newUrl = `${window.location.pathname}?${params.toString()}`;
+      router.push(newUrl);
+      fetchEventData(currentPage);
+    }
   }, [currentPage]);
-
-  const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-  };
-
-  const handlePrev = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
 
   return (
     <>
@@ -83,7 +83,7 @@ const Notes = () => {
           <div className="flex justify-center gap-4 my-10">
             <button
               disabled={currentPage <= 1 || loading}
-              onClick={handlePrev}
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               className="px-4 py-2 bg-red-500 text-white rounded disabled:opacity-50"
             >
               Previous
@@ -95,7 +95,7 @@ const Notes = () => {
 
             <button
               disabled={currentPage >= totalPages || loading}
-              onClick={handleNext}
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               className="px-4 py-2 bg-red-500 text-white rounded disabled:opacity-50"
             >
               Next
