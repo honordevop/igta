@@ -3,25 +3,31 @@ import connect from "@/Utils/db";
 import Notes from "@/models/Notes";
 
 export const GET = async (request) => {
-  // const url = new URL(request.url);
-
-  // const email = url.searchParams.get("email");
-
-  //fetch
   try {
     await connect();
 
-    const notes = await Notes.find();
-    return NextResponse.json({ notes }, {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
-        "Pragma": "no-cache",
-        "Expires": "0",
-      } });
+    const url = new URL(request.url);
+    const page = parseInt(url.searchParams.get("page") || "1");
+    const limit = parseInt(url.searchParams.get("limit") || "20");
+    const skip = (page - 1) * limit;
+
+    // Get total count of notes
+    const totalCount = await Notes.countDocuments();
+
+    // Get paginated notes sorted by createdAt descending (most recent first)
+    const notes = await Notes.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    return NextResponse.json({
+      notes,
+      totalCount,
+      totalPages: Math.ceil(totalCount / limit),
+      currentPage: page,
+    });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return NextResponse.json({ message: "Database Error" }, { status: 500 });
   }
 };

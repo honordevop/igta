@@ -1,90 +1,51 @@
+"use client"; // <-- make this a client component now
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import NotePageCard from "@/components/NotePageCard";
 import PageHeader from "@/components/PageHeader";
-import ServicePageCard from "@/components/ServicePageCard";
-import TrainingModal from "@/components/TrainingModal";
-import { servicesData } from "@/Utils/store";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Notes = async () => {
-  const fetchWithCacheBust = (url, options = {}) => {
-    const cacheBustUrl = `${url}?_=${new Date().getTime()}`; // Add cache-busting query parameter
-    return fetch(cacheBustUrl, {
-      ...options, // Spread existing options
-    });
-  };
+const Notes = () => {
+  const [notes, setNotes] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  // const fetchEventData = async () => {
-  //   // console.log(baseUrl);
-  //   // setLoading(true);
-  //   try {
-  //     const response = await fetch(
-  //       "http://localhost:3000/api/note",
-  //       {
-  //         headers: {
-  //           "Cache-Control": "no-cache", // Cache for 5 minutes (300 seconds)
-  //           'Pragma': 'no-cache',
-  //           'Expires': '0',
-  //         },
-  //       }
-  //     );
+  const limit = 20; // items per page
 
-  //     const res = await response.json();
-
-  //     // const data = res.trainings;
-  //     // setTrainingList(res.event);
-  //     // console.log(res.trainings);
-  //     // setTimeout(() => {
-  //     //   setLoading(false);
-  //     // }, 2000);
-  //     // console.log(res.trainings);
-  //     return res.notes;
-  //   } catch (error) {
-  //     // setError(error?.response);
-  //     // setLoading(false);
-  //     // toast(error?.message);
-
-  //     console.log(error);
-  //   }
-  // };
-
-  const fetchEventData = async () => {
-    // setLoading(true); // Uncomment if you want to set loading state
+  const fetchEventData = async (page = 1) => {
+    setLoading(true);
     try {
-      const response = await fetchWithCacheBust(
-        `https://igtainternational.org/api/note`,
-        {
-          headers: {
-            "Cache-Control": "no-cache",
-            Pragma: "no-cache",
-            Expires: "0",
-          },
-        }
-      );
+      const response = await fetch(`/api/note?page=${page}&limit=${limit}`, {
+        cache: "no-store", // no caching, always fresh
+      });
 
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
 
-      const res = await response.json();
-      // Return the notes data
-      // console.log(res.notes)
-      return res.notes;
+      const data = await response.json();
+
+      setNotes(data.notes || []);
+      setTotalPages(data.totalPages || 1);
+      setCurrentPage(data.currentPage || 1);
     } catch (error) {
-      // Handle the error
-      console.log(error);
-      // Optionally, set error state or show a toast message
+      console.error("Failed to fetch notes:", error);
+      setNotes([]);
     } finally {
-      // setLoading(false); // Uncomment if you want to set loading state
+      setLoading(false);
     }
   };
 
-  const data = await fetchEventData();
-  const sortedData = data?.sort(
+  // Fetch notes on mount and whenever currentPage changes
+  useEffect(() => {
+    fetchEventData(currentPage);
+  }, [currentPage]);
+
+  // Sort notes by createdAt desc (optional since API already sorts)
+  const sortedNotes = notes.sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
-  // console.log(data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
 
   return (
     <>
@@ -100,12 +61,39 @@ const Notes = async () => {
             <p className="text-xl">
               IGTA provides undenied access to training materials and study
               guides for all our courses and trainings. The goal is to ensure
-              that student can consult this notes and materials for refrences
+              that students can consult these notes and materials for references
               and further studies.
             </p>
           </div>
 
-          <NotePageCard data={sortedData} />
+          {loading ? (
+            <p>Loading notes...</p>
+          ) : (
+            <NotePageCard data={sortedNotes} />
+          )}
+
+          {/* Pagination Controls */}
+          <div className="flex justify-center gap-4 my-10">
+            <button
+              disabled={currentPage <= 1 || loading}
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              className="px-4 py-2 bg-red-500 text-white rounded disabled:opacity-50"
+            >
+              Previous
+            </button>
+
+            <span className="px-4 py-2">
+              Page {currentPage} of {totalPages}
+            </span>
+
+            <button
+              disabled={currentPage >= totalPages || loading}
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              className="px-4 py-2 bg-red-500 text-white rounded disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
       <Footer />
