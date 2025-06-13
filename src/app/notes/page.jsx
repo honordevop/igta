@@ -1,51 +1,62 @@
-"use client"; // <-- make this a client component now
+"use client";
+
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import NotePageCard from "@/components/NotePageCard";
 import PageHeader from "@/components/PageHeader";
 import React, { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 
 const Notes = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const initialPage = parseInt(searchParams.get("page") || "1");
+
   const [notes, setNotes] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const limit = 20; // items per page
+  const limit = 20;
 
-  const fetchEventData = async (page = 1) => {
+  const fetchEventData = async (page) => {
     setLoading(true);
     try {
       const response = await fetch(`/api/note?page=${page}&limit=${limit}`, {
-        cache: "no-store", // no caching, always fresh
+        cache: "no-store",
       });
 
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`);
-      }
+      if (!response.ok) throw new Error("Failed to fetch");
 
       const data = await response.json();
-
       setNotes(data.notes || []);
       setTotalPages(data.totalPages || 1);
-      setCurrentPage(data.currentPage || 1);
     } catch (error) {
       console.error("Failed to fetch notes:", error);
-      setNotes([]);
     } finally {
       setLoading(false);
     }
   };
 
-  // Fetch notes on mount and whenever currentPage changes
   useEffect(() => {
     fetchEventData(currentPage);
   }, [currentPage]);
 
-  // Sort notes by createdAt desc (optional since API already sorts)
-  const sortedNotes = notes.sort(
-    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  );
+  // Update the URL query param when currentPage changes
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("page", currentPage.toString());
+    router.push(`?${params.toString()}`);
+  }, [currentPage]);
+
+  const handleNext = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
 
   return (
     <>
@@ -66,18 +77,14 @@ const Notes = () => {
             </p>
           </div>
 
-          {loading ? (
-            <p>Loading notes...</p>
-          ) : (
-            <NotePageCard data={sortedNotes} />
-          )}
+          {loading ? <p>Loading notes...</p> : <NotePageCard data={notes} />}
 
-          {/* Pagination Controls */}
+          {/* Pagination */}
           <div className="flex justify-center gap-4 my-10">
             <button
               disabled={currentPage <= 1 || loading}
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              className="px-4 py-2 bg-red-500 text-white rounded disabled:opacity-50"
+              onClick={handlePrev}
+              className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
             >
               Previous
             </button>
@@ -88,8 +95,8 @@ const Notes = () => {
 
             <button
               disabled={currentPage >= totalPages || loading}
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              className="px-4 py-2 bg-red-500 text-white rounded disabled:opacity-50"
+              onClick={handleNext}
+              className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
             >
               Next
             </button>

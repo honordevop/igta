@@ -88,9 +88,9 @@ body {
   scrollbar-width: 0;
 } */
 
-::-webkit-scrollbar {
-  width: 8px; /* Adjust the width as needed */
-}
+/* ::-webkit-scrollbar {
+  width: 8px; 
+} */
 
 .glassMorphism {
   background: rgba(255, 255, 255, 0.5);
