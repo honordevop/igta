@@ -18,7 +18,7 @@ export const GET = async (request) => {
     const notes = await Notes.find()
       .sort({ createdAt: -1 })
       .skip(skip)
-      .limit(limit);
+      .limit(limit).allowDiskUse(true);
 
     return NextResponse.json({
       notes,

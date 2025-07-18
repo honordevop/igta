@@ -45,5 +45,8 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
+userSchema.index({ createdAt: -1 });
+userSchema.index({ updatedAt: -1 });
+
 // export default mongoose.model("User", userSchema);
 export default mongoose.models.User || mongoose.model("User", userSchema);

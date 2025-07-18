@@ -5,18 +5,29 @@ import Navbar from "@/components/Navbar";
 import NotePageCard from "@/components/NotePageCard";
 import PageHeader from "@/components/PageHeader";
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+
+const getInitialPage = () => {
+  if (typeof window === "undefined") return 1;
+  const params = new URLSearchParams(window.location.search);
+  return parseInt(params.get("page") || "1", 10);
+};
 
 const Notes = () => {
   const router = useRouter();
+  const searchParams =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search)
+      : null;
 
   const [notes, setNotes] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(getInitialPage());
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
 
   const limit = 10;
 
+  // Fetch notes
   const fetchEventData = async (page) => {
     setLoading(true);
     try {
@@ -29,7 +40,6 @@ const Notes = () => {
       const data = await response.json();
       setNotes(data.notes || []);
       setTotalPages(data.totalPages || 1);
-      setCurrentPage(data.currentPage || 1);
     } catch (error) {
       console.error("Failed to fetch notes:", error);
     } finally {
@@ -37,24 +47,24 @@ const Notes = () => {
     }
   };
 
-  // Use native window.location to get query params
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const page = parseInt(params.get("page") || "1", 10);
-      setCurrentPage(page);
-      fetchEventData(page);
-    }
-  }, []);
+  // Set page from URL on initial load
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const params = new URLSearchParams(window.location.search);
+  //     const pageFromUrl = parseInt(params.get("page") || "1", 10);
+  //     setCurrentPage(pageFromUrl);
+  //   }
+  // }, []);
 
-  // Update URL when page changes
+  // Fetch data when currentPage changes
   useEffect(() => {
+    fetchEventData(currentPage);
+
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
       params.set("page", currentPage);
       const newUrl = `${window.location.pathname}?${params.toString()}`;
-      router.push(newUrl);
-      fetchEventData(currentPage);
+      router.push(newUrl); // ✅ This creates proper history entry
     }
   }, [currentPage]);
 
@@ -83,19 +93,25 @@ const Notes = () => {
           <div className="flex justify-center gap-4 my-10">
             <button
               disabled={currentPage <= 1 || loading}
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
               className="px-4 py-2 bg-red-500 text-white rounded disabled:opacity-50"
             >
               Previous
             </button>
 
-            <span className="px-4 py-2">
-              Page {currentPage} of {totalPages}
-            </span>
+            {loading ? (
+              <span className="px-4 py-2">Fetching ...</span>
+            ) : (
+              <span className="px-4 py-2">
+                Page {currentPage} of {totalPages}
+              </span>
+            )}
 
             <button
               disabled={currentPage >= totalPages || loading}
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+              }
               className="px-4 py-2 bg-red-500 text-white rounded disabled:opacity-50"
             >
               Next

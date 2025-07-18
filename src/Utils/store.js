@@ -41,7 +41,7 @@ export const navLinks = [
   {
     id: "5",
     title: "CLASSROOM",
-    url: "/notes",
+    url: "/notes?page=1",
   },
   {
     id: "6",
@@ -224,7 +224,7 @@ export const userTabsLink = [
   {
     title: "Classroom",
     icon: <LuBookOpenCheck />,
-    link: "/notes",
+    link: "/notes?page=1",
     slug: "notes",
   },
   {
