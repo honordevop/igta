@@ -20,7 +20,8 @@ export default function Home() {
         </div>
         <div className="container bg-red-100 py-6 md:mt-16">
           <p className=" text-xl text-center font-bold ">
-            The result of successful candidates that took the September 2024 IGTA NGO Management Training and examination has been released.
+            The Result Of Successful Candidates That Took The November 2025 IGTA
+            Risk Management Training Examination Has Been Released.
           </p>
           <Link
             href="/result"
