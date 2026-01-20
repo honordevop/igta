@@ -288,6 +288,41 @@ export const adminTabsLink = [
 
 export const teamsData = [
   {
+    name: "Ntsobe belinga wilfried Roger",
+    desc: "IGTA Technical Lead",
+    img: "/roger.jpeg",
+  },
+  {
+    name: "Okokhuele Kenneth Osaze",
+    desc: "IGTA Facilitator",
+    img: "/osaze.jpeg",
+  },
+  {
+    name: "Chinwe Lucky Ukandu",
+    desc: "IGTA Facilitator-Abuja",
+    img: "/ukandu.jpeg",
+  },
+  {
+    name: "Leona Onyekachi Barango",
+    desc: "IGTA Facilitator",
+    img: "/barango.jpeg",
+  },
+  {
+    name: "Engr. Adeniji Ayodeji Samuel",
+    desc: "IGTA Facilitator",
+    img: "/samuel.jpeg",
+  },
+  {
+    name: "Okpara Emmanuel Ejike",
+    desc: "IGTA Facilitator (Security Expert & Emerging Technologies Specialist)",
+    img: "/ejike.jpeg",
+  },
+  {
+    name: "Chinda Emmanuel Sunday",
+    desc: "IGTA Facilitator-Port Harcourt City",
+    img: "/sunday.jpeg",
+  },
+  {
     name: "Elvis ujuater Abiritei",
     desc: "IGTA Class H facilitator-UAE",
     img: "/elvis.png",
